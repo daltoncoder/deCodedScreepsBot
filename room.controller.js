@@ -25,11 +25,11 @@ var run = function (room) {
     }
 
     var roomExits = Game.map.describeExits(room.name);
-    for (exit in roomExits){
+    for (exit of roomExits){
       if(!room.memory.neighbors){
         room.memory.neighbors = {};
       }
-      room.memory.neighbors[exit.value] = {};
+      room.memory.neighbors[exit] = {};
     }
 
     room.memory.init = true;
