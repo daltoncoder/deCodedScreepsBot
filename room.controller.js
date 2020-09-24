@@ -24,7 +24,7 @@ var run = function (room) {
       room.memory.spawnQueue = [];
     }
 
-    var roomExits = Object.value(Game.map.describeExits(room.name));
+    var roomExits = Object.values(Game.map.describeExits(room.name));
     console.log(roomExits);
     for (exit in roomExits){
       if(!room.memory.neighbors){
