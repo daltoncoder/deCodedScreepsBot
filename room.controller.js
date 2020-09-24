@@ -25,7 +25,7 @@ var run = function (room) {
     }
 
     var roomExits = Game.map.describeExits(room.name);
-    for (exit of roomExits){
+    for (exit in roomExits){
       if(!room.memory.neighbors){
         room.memory.neighbors = {};
       }
