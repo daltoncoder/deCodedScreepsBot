@@ -29,7 +29,7 @@ var run = function (room) {
       if(!room.memory.neighbors){
         room.memory.neighbors = {};
       }
-      room.memory.neighbors[exit] = {};
+      room.memory.neighbors[exit.value] = {};
     }
 
     room.memory.init = true;
