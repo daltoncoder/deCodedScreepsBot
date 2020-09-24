@@ -120,3 +120,4 @@
               else {
                 return this.spawnCreep([MOVE], generateName('Scout'), { memory: { role: 'scout', homeRoom : room} });
               }
+            };
