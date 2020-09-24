@@ -1,6 +1,6 @@
 const STATE_SPAWNING = 0;
 const STATE_MOVING = 1;
-const STATE_SCOUT = 3;
+const STATE_SCOUTING = 3;
 
 var run = function(creep) {
     if(!creep.memory.state) {
@@ -70,7 +70,7 @@ var runScouting = function(creep){
             Memory.rooms[homeRoom].neighbors[targetRoom].builderNeeded = true;
         }
     }
-    
+
     };
 
 module.exports = run;
