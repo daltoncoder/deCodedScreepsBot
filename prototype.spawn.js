@@ -112,3 +112,11 @@
             return this.spawnCreep(body, generateName(roleType), { memory: { role: roleType, homeRoom : room} });
               }
           };
+          StructureSpawn.prototype.createCustomScout =
+            function(energy, room) {
+              if (energy < 50){
+                return;
+              }
+              else {
+                return this.spawnCreep([MOVE], generateName('Scout'), { memory: { role: 'scout', homeRoom : room} });
+              }

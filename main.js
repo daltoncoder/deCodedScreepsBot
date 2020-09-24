@@ -7,6 +7,7 @@ var roleHauler = require('role.hauler');
 var roleDefender = require('role.defender');
 var roleRangedDefender = require ('role.rangedDefender');
 var roleTransporter = require ('role.transporter');
+var roleScout = require ('role.scout');
 var roomController = require ('room.controller');
 require ('prototype.spawn');
 
@@ -74,6 +75,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'transporter') {
           roleTransporter(creep);
+        }
+        if(creep.memory.role == 'scout'){
+            roleScout(creep);
         }
 
     }
