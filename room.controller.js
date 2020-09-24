@@ -30,7 +30,7 @@ var run = function (room) {
       if(!room.memory.neighbors){
         room.memory.neighbors = {};
       }
-      room.memory.neighbors[exit] = {};
+      room.memory.neighbors[roomExit[exit]] = {};
     }
 
     room.memory.init = true;
