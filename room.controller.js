@@ -116,6 +116,7 @@ var run = function (room) {
 
     }
   }
+}
 
 };
 module.exports = run;
