@@ -29,8 +29,7 @@
 			// create a balanced body as big as possible with the given energy
 		if(energy < 250) {
       var ems = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.memory.homeRoom == room);
-      console.log(ems);
-      if(ems < 3){
+      if(ems.length < 3){
 		    this.spawnCreep([WORK,CARRY,MOVE], generateName('EMS'), { memory: { role: 'harvester', homeRoom : room} });
       }
     }
