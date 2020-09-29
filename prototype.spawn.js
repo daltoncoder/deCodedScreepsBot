@@ -32,7 +32,6 @@
       if(ems < 3){}
 		    this.spawnCreep([WORK,CARRY,MOVE], generateName('EMS'), { memory: { role: 'harvester', homeRoom : room} });
       }
-		}
 		else if(energy < 200){
 		    return;
 		}
