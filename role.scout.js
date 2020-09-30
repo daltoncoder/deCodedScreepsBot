@@ -61,7 +61,7 @@ var runScouting = function(creep){
         var sources = creep.room.find(FIND_SOURCES);
         Memory.rooms[homeRoom].neighbors[targetRoom].sources = sources;
 
-        var homeRoomExits = Object.keys(Memory.rooms[homeRoom].exits);
+        var homeRoomExits = Object.values(Memory.rooms[homeRoom].exits);
 
         Memory.rooms[homeRoom].neighbors[targetRoom].controllerPos = creep.room.controller.pos;
         if (homeRoomExits.includes(targetRoom)){
