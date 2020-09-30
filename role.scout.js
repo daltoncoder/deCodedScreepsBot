@@ -67,8 +67,8 @@ var runScouting = function(creep){
         if (homeRoomExits.includes(targetRoom)){
             var roomExits = Object.values(Game.map.describeExits(targetRoom));
             for (exit in roomExits){
-                if(!Memory.rooms[homeRoom].neighbors[roomExit[exit]]){
-                    Memory.rooms[homeRoom].neighbors[roomExit[exit]] = {needScout : true};
+                if(!Memory.rooms[homeRoom].neighbors[roomExits[exit]]){
+                    Memory.rooms[homeRoom].neighbors[roomExits[exit]] = {needScout : true};
                 }
             }
         }
