@@ -71,7 +71,7 @@ var runScouting = function(creep){
             }
         }
 
-        if(!Object.keys(Memory.rooms[homeRoom].exits).includes(targetRoom)){
+        if(Object.keys(Memory.rooms[homeRoom].exits).includes(targetRoom) == false){
             if(sources.length >= 2 && Game.map.getRoomStatus(targetRoom) == 'normal'){
                 Memory.rooms[homeRoom].neighbors[targetRoom].claimable = true;
             }
