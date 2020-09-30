@@ -25,12 +25,11 @@ var run = function (room) {
     }
 
     var roomExits = Object.values(Game.map.describeExits(room.name));
-    console.log(roomExits);
     for (exit in roomExits){
       if(!room.memory.neighbors){
         room.memory.neighbors = {};
       }
-      room.memory.neighbors[roomExits[exit]] = {};
+      room.memory.neighbors[roomExits[exit]] = {needScout : true};
     }
 
     room.memory.init = true;
@@ -48,7 +47,9 @@ var run = function (room) {
   }
   var maxUpgraders = 2;
   var maxBuilders = 0;
-  var maxScouts = Object.keys(room.memory.neighbors).length; 
+
+  var scoutableRooms = _.filter(Object.keys(room.memory.neighbors), (openRoom) => room.memory.neighbors[openRoom].needScout == true);
+  var maxScouts = scoutableRooms.length; 
 
   var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.memory.homeRoom == room.name);
   var haulers = _.filter(Game.creeps, (creep) => creep.memory.role == 'hauler' && creep.memory.homeRoom == room.name);

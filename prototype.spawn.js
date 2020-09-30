@@ -14,13 +14,13 @@
       Memory.creepNameCounter++
       return name;
     }
-    else if (Game.creeps[name + 'the Second'] == undefined){
+    else if (Game.creeps[name + ' the Second'] == undefined){
       Memory.creepNameCounter++
-      return name + 'the Second';
+      return name + ' the Second';
     }
     else{
       Memory.creepNameCounter++
-      return name + 'the Third';
+      return name + ' the Third';
     }
   }
 	// create a new function for StructureSpawn

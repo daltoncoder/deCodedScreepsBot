@@ -31,7 +31,7 @@ var runSpawning = function(creep){
     if(!creep.memory.init){
         var assignedRooms = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout').map((el) => el.memory.targetRoom);
 
-        var openRoom = _.filter(Object.keys(Memory.rooms[creep.memory.homeRoom].neighbors), (room) => assignedRooms.indexOf(room) == -1);
+        var openRoom = _.filter(Object.keys(Memory.rooms[creep.memory.homeRoom].neighbors), (room) => assignedRooms.indexOf(room) == -1 && Memory.rooms[creep.memory.homeRoom].neighbors[room].needScout == true);
         if (openRoom.length > 0){
             creep.memory.targetRoom = openRoom[0];
             
@@ -57,17 +57,36 @@ var runMoving = function(creep, transitionState){
 var runScouting = function(creep){
     var homeRoom = creep.memory.homeRoom;
     var targetRoom = creep.memory.targetRoom;
-    if(!Memory.rooms[creep.memory.homeRoom].neighbors[creep.memory.targetRoom].beenScouted){
+    if(!creep.memory.scouted){
         var sources = creep.room.find(FIND_SOURCES);
         Memory.rooms[homeRoom].neighbors[targetRoom].sources = sources;
 
         Memory.rooms[homeRoom].neighbors[targetRoom].controllerPos = creep.room.controller.pos;
+        if (Object.keys(Memory.rooms[homeRoom].exits).includes(targetRoom)){
+            var roomExits = Object.values(Game.map.describeExits(targetRoom));
+            for (exit in roomExits){
+                if(!Memory.rooms[homeRoom].neighbors[roomExit[exit]]){
+                    Memory.rooms[homeRoom].neighbors[roomExit[exit]] = {needScout : true};
+                }
+            }
         }
+
+        if(!Object.keys(Memory.rooms[homeRoom].exits).includes(targetRoom)){
+            if(sources.length >= 2 && Game.map.getRoomStatus(targetRoom) == 'normal'){
+                Memory.rooms[homeRoom].neighbors[targetRoom].claimable = true;
+            }
+            Memory.rooms[homeRoom].neighbors[targetRoom].neighbors[roomExits[exit]].needScout = false;
+        }
+        creep.memory.scouted = true;
+    }
 
     if (Game.time % 10 === 0){
         let constructionSites = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
         if(constructionSites.length > 0){
             Memory.rooms[homeRoom].neighbors[targetRoom].builderNeeded = true;
+        }
+        else {
+            Memory.rooms[homeRoom].neighbors[targetRoom].builderNeeded = false;
         }
     }
 
