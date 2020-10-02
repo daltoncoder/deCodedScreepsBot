@@ -72,6 +72,7 @@ var getBuildingTarget = function(creep) {
         }
     }
     else{
+        console.log('builder is here');
         creep.memory.targetID = constructionSites.id;
         return constructionSites.pos;
     }
