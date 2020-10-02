@@ -64,6 +64,7 @@ var getBuildingTarget = function(creep) {
     if (constructionSites == null){
         var neighbors = Object.keys(Memory.rooms[homeRoom].neighbors);
         for (room in neighbors){
+            console.log(room);
             if(Memory.rooms[homeRoom].neighbors[room].builderNeeded == true){
                 var roomPos = {x : 25, y : 25, roomName : room}
                 return roomPos;
