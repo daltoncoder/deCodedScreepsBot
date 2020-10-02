@@ -19,7 +19,7 @@ var run = function(creep) {
             runGrabResource(creep, {nextState: STATE_MOVING});
             break;
         case STATE_BUILDING:
-            runDepositResource(creep, {nextState: STATE_MOVING});
+            runBuilding(creep, {nextState: STATE_MOVING});
             break;
     }
 };
@@ -72,7 +72,6 @@ var getBuildingTarget = function(creep) {
         }
     }
     else{
-        console.log('builder is here');
         creep.memory.targetID = constructionSites.id;
         return constructionSites.pos;
     }
