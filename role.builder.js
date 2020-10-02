@@ -43,7 +43,7 @@ var builderContext = function(creep, currentState) {
     switch(currentState) {
         case STATE_MOVING:
             if(_.sum(creep.store) > 0) {
-                creep.memory.targetPos = getBuilderTarget(creep);
+                creep.memory.targetPos = getBuildingTarget(creep);
                 return {nextState: STATE_BUILDING};
             } else {
                 creep.memory.targetPos = Game.rooms[creep.memory.homeRoom].storage.pos;	// or perhaps you're very fancy and you have a function that dynamically assigns your haulers...
