@@ -62,7 +62,7 @@ var getBuildingTarget = function(creep) {
     var homeRoom = creep.memory.homeRoom;
     var constructionSites = creep.pos.findClosestByRange(FIND_MY_CONSTRUCTION_SITES);
     if (constructionSites == null){
-        var neighbors = Object.keys(Memory.rooms[homeRoom].neighbors);
+        var neighbors = Object.values(Memory.rooms[homeRoom].neighbors);
         for (room in neighbors){
             console.log(room);
             if(Memory.rooms[homeRoom].neighbors[room].builderNeeded == true){
