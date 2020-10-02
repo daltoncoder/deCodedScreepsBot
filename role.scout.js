@@ -20,23 +20,23 @@ var run = function(creep) {
     }
 };
 
-var runSpawning = function(creep){        
+var runSpawning = function(creep){
     //When the creep pops out of the spawn transition out of this state and into the next one
     if(!creep.spawning){
         creep.memory.state = STATE_MOVING;
         run(creep);
         return;
-    }    
-    //Check to see if the creep needs to be "initalized" and if hasnt we do it. 
+    }
+    //Check to see if the creep needs to be "initalized" and if hasnt we do it.
     if(!creep.memory.init){
         var assignedRooms = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout').map((el) => el.memory.targetRoom);
 
         var openRoom = _.filter(Object.keys(Memory.rooms[creep.memory.homeRoom].neighbors), (room) => assignedRooms.indexOf(room) == -1 && Memory.rooms[creep.memory.homeRoom].neighbors[room].needScout == true);
         if (openRoom.length > 0){
             creep.memory.targetRoom = openRoom[0];
-            
-        }       
-    
+
+        }
+
     creep.memory.init = true;
     }
 
@@ -51,7 +51,7 @@ var runMoving = function(creep, transitionState){
         return;
     }
     creep.moveTo(pos);
-    
+
 };
 
 var runScouting = function(creep){
@@ -76,7 +76,7 @@ var runScouting = function(creep){
         }
 
         if(!homeRoomExits.includes(targetRoom)){
-            if(sources.length >= 2 && Game.map.getRoomStatus(targetRoom) == 'normal'){
+            if(Object.keys(sources).length >= 2 && Game.map.getRoomStatus(targetRoom) == 'normal'){
                 Memory.rooms[homeRoom].neighbors[targetRoom].claimable = true;
             }
             Memory.rooms[homeRoom].neighbors[targetRoom].needScout = false;
