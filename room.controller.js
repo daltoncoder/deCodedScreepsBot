@@ -45,7 +45,7 @@ var run = function (room) {
   else {
     var maxTransporters = 0;
   }
-  var maxUpgraders = 2;
+  var maxUpgraders = 1;
   var maxBuilders = 1;
 
   var scoutableRooms = _.filter(Object.keys(room.memory.neighbors), (openRoom) => room.memory.neighbors[openRoom].needScout == true);
