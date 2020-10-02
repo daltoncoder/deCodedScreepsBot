@@ -60,7 +60,7 @@ var getBuildingTarget = function(creep) {
     // Perhaps we fill towers, labs, nukers, power spawn, etc...
     // It depends on your code!
     var homeRoom = creep.memory.homeRoom;
-    var constructionSites = creep.room.findClosestByRange(FIND_MY_CONSTRUCTION_SITES);
+    var constructionSites = creep.pos.findClosestByRange(FIND_MY_CONSTRUCTION_SITES);
     if (constructionSites == null){
         var neighbors = Object.keys(Memory.rooms[homeRoom].neighbors);
         for (room in neighbors){
