@@ -13,7 +13,7 @@ var run = function(creep) {
             runSpawning(creep, {nextState: STATE_MOVING});
             break;
         case STATE_MOVING:
-            runMoving(creep, {context: haulerContext});
+            runMoving(creep, {context: builderContext});
             break;
         case STATE_GRAB_RESOURCE:
             runGrabResource(creep, {nextState: STATE_MOVING});
