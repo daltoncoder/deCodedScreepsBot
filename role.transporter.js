@@ -55,7 +55,7 @@ var getTransporterWithdrawTarget = function(creep) {
             filter: (resource) => {return resource.resourceType == RESOURCE_ENERGY}
         });
         if(droppedEnergy.length > 0){
-            creep.memory.targetID = droppedEnergy[0];
+            creep.memory.targetID = droppedEnergy[0].id;
             return droppedEnergy[0].pos
         }
         else {
