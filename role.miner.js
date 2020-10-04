@@ -75,7 +75,7 @@ const STATE_HARVESTING = 2;
             
             creep.memory.spawnTime = Game.spawns['Spawn1'].pos.getRangeTo(creep.memory.target.x,creep.memory.target.y) * 3;
             
-            creep.memory.haulersNeeded = Math.round(creep.memory.spawnTime / 20);
+            creep.memory.haulersNeeded = Math.max(Math.round(creep.memory.spawnTime / 20, 1);
             
             
                 
