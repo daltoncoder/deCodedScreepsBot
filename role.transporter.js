@@ -180,6 +180,8 @@ var runGrabResource = function(creep, options) {
   }
 var grabTarget = Game.getObjectById(creep.memory.targetID);
 if(grabTarget == null){
+    creep.memory.state = transitionState;
+    run(creep);
     return;
 }
 else{
