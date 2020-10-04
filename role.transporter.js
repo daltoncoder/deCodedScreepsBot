@@ -33,19 +33,7 @@ var transporterContext = function(creep, currentState) {
             }
             else {
                 let storagePos = Game.getObjectById(creep.memory.storage);
-                if(Memory.rooms[creep.memory.homeRoom].nukerPresent == true){
-                    var nuker = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return structure.structureType == STRUCTURE_NUKER && structure.store[RESOURCE_ENERGY] > 0;
-                    }
-                    });
-                    console.log(nuker + ' nukerposbull')
-                    creep.memory.targetPos = nuker[0].pos;
-                    creep.memory.storage = nuker[0].id;
-                }
-                else{
                 creep.memory.targetPos = storagePos.pos;
-                }
                 return {nextState: STATE_GRAB_RESOURCE};
                 
             }
@@ -53,6 +41,23 @@ var transporterContext = function(creep, currentState) {
     }
 };
 
+var getTransporterWithdrawTarget = function(creep) {
+    var ruins = creep.room.find(FIND_RUINS, {
+        filter: (ruin) => {
+            return (ruin.store[RESOURCE_ENERGY] > 0)
+        }
+    });
+    if(ruins.length > 0){
+        creep.memory.targetID = ruin.id;
+        return ruin.pos;
+    }
+    else {
+        let storagePos = Game.getObjectById(creep.memory.storage);
+        creep.memory.targetID = storagePos.id;
+        return storagePos.pos;
+    }
+
+}
 var getTransporterDepositTarget = function(creep) {
     // We work out where to put the resources...
     // Perhaps we fill the spawn/extensions...
@@ -164,8 +169,8 @@ var runGrabResource = function(creep, options) {
       run(creep);
       return;
   }
-var storage = Game.getObjectById(creep.memory.storage);
-creep.withdraw(storage, RESOURCE_ENERGY);
+var grabTarget = Game.getObjectById(creep.memory.targetID);
+creep.withdraw(grabTarget, RESOURCE_ENERGY);
 };
 
 var runDepositResource = function(creep, options) {
