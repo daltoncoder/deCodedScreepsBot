@@ -66,6 +66,7 @@ else{
             }
     }});
     if(fullStructs.length > 0){
+        creep.memory.targetID = fullStructs[0].id;
         return fullStructs[0].pos;
     }
     else{
@@ -78,6 +79,7 @@ else{
             return droppedEnergy[0].pos;
         }
         else{
+            creep.memory.targetID = Game.rooms[creep.memory.homeRoom].storage.id;
             return Game.rooms[creep.memory.homeRoom].storage.pos;
 
         }
@@ -137,7 +139,8 @@ var runGrabResource = function(creep, options) {
         run(creep);
         return;
     }
-    creep.withdraw(creep.room.storage, RESOURCE_ENERGY);
+    var target = Game.getObjectById(creep.memory.targetID);
+    creep.withdraw(target, RESOURCE_ENERGY);
 };
 
 var runBuilding = function(creep,options) {
