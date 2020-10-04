@@ -29,7 +29,7 @@ var roleUpgrader = {
                 var target = ruin;
             }
             else{
-                console.log(sources);
+                console.log(sources + '1');
                 var target = sources;
 
                 console.log('creep:' + creep + 'target: ' + target)
