@@ -39,6 +39,7 @@ var transporterContext = function(creep, currentState) {
                         structure.structureType == STRUCTURE_NUKER && structure.store[RESOURCE_ENERGY] > 0;
                     }
                     });
+                    console.log(nuker + ' nukerposbull')
                     creep.memory.targetPos = nuker.pos;
                 }
                 else{
