@@ -43,8 +43,9 @@ var transporterContext = function(creep, currentState) {
                 }
                 else{
                 creep.memory.targetPos = storagePos.pos;
-                return {nextState: STATE_GRAB_RESOURCE};
                 }
+                return {nextState: STATE_GRAB_RESOURCE};
+                
             }
             break;
     }
