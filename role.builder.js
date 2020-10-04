@@ -46,11 +46,40 @@ var builderContext = function(creep, currentState) {
                 creep.memory.targetPos = getBuildingTarget(creep);
                 return {nextState: STATE_BUILDING};
             } else {
-                creep.memory.targetPos = Game.rooms[creep.memory.homeRoom].storage.pos;	// or perhaps you're very fancy and you have a function that dynamically assigns your haulers...
+                creep.memory.targetPos = getEnergyTarget(creep);	// or perhaps you're very fancy and you have a function that dynamically assigns your haulers...
                 return {nextState: STATE_GRAB_RESOURCE};
             }
             break;
     }
+};
+
+var getEnergyTarget = function(creep) {
+if(creep.room.storage && creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 0){
+    return creep.room.storage.pos;
+}
+else{
+    var fullStructs = creep.room.find(FIND_STRUCTURES, {
+        filter: (structure) => {
+            return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+    }});
+    if(fullStructs.length > 0){
+        return fullStructs[0].pos;
+    }
+    else{
+        var droppedEnergy = creep.room.find(FIND_DROPPED_RESOURCES, {
+            filter: (resource) => {
+                return resource.resourceType == RESOURCE_ENERGY;
+            }
+        });
+        if(droppedEnergy.length > 0){
+            return droppedEnergy[0].pos;
+        }
+        else{
+            return Game.rooms[creep.memory.homeRoom].storage.pos;
+
+        }
+    }
+}
 };
 
 var getBuildingTarget = function(creep) {
