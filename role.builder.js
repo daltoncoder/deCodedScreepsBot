@@ -62,7 +62,7 @@ else{
         filter: (structure) => {
             console.log('here');
             if(structure.store){
-            return structure.store[RESOURCE_ENERGY] > 0;
+            return (structure.store[RESOURCE_ENERGY] > 0 && structure.structureType != STRUCTURE_EXTENSION && structure.structureType != STRUCTURE_SPAWN);
             }
     }});
     if(fullStructs.length > 0){
