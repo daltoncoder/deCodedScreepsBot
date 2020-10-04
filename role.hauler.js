@@ -111,7 +111,7 @@ var runSpawning = function (creep,options){
     if(!creep.memory.init){
         var miner = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
             filter: function(miner) {
-                if((miner.memory.role == 'miner') && (miner.memory.haulers.length < miner.memory.haulersNeeded)){
+                if((miner.memory.role == 'miner' && miner.memory.homeRoom == creep.memory.homeRoom) && (miner.memory.haulers.length < miner.memory.haulersNeeded)){
                     return true;
                 }
                 else {
