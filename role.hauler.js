@@ -119,7 +119,8 @@ var runSpawning = function (creep,options){
                 }
                 }});
         if(!miner){
-            creep.memory.minerPos = Game.getObjectById('5f5f8f747a361d382d8f3976').pos;
+            var nearSource= creep.room.find(FIND_SOURCES);
+            creep.memory.minerPos = nearSource[0].pos
         }
         else{
             creep.memory.miner = miner.id;
