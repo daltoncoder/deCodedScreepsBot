@@ -54,7 +54,8 @@ var builderContext = function(creep, currentState) {
 };
 
 var getEnergyTarget = function(creep) {
-if(creep.room.storage && creep.room.storage.store.getUsedCapacity(RESOURCE_ENERGY) > 0){
+if(creep.room.storage && creep.room.storage.store[RESOURCE_ENERGY] > 0){
+    creep.memory.targetID = creep.room.storage.id;
     return creep.room.storage.pos;
 }
 else{
@@ -76,6 +77,7 @@ else{
             }
         });
         if(droppedEnergy.length > 0){
+            creep.memory.targetID = droppedEnergy[0].id;
             return droppedEnergy[0].pos;
         }
         else{
