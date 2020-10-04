@@ -33,8 +33,18 @@ var transporterContext = function(creep, currentState) {
             }
             else {
                 let storagePos = Game.getObjectById(creep.memory.storage);
+                if(Memory.rooms[creep.memory.homeRoom].nukerPresent == true){
+                    var nuker = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        structure.structureType == STRUCTURE_NUKER && structure.store[RESOURCE_ENERGY] > 0;
+                    }
+                    });
+                    creep.memory.targetPos = nuker.pos;
+                }
+                else{
                 creep.memory.targetPos = storagePos.pos;
                 return {nextState: STATE_GRAB_RESOURCE};
+                }
             }
             break;
     }
