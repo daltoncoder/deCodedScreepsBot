@@ -63,9 +63,6 @@ else{
             if(structure.store){
             return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
             }
-            else{
-              return false;
-            }
     }});
     if(fullStructs.length > 0){
         return fullStructs[0].pos;
