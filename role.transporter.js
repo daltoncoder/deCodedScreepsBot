@@ -32,8 +32,7 @@ var transporterContext = function(creep, currentState) {
                 return {nextState: STATE_DEPOSIT_RESOURCE};
             }
             else {
-                let storagePos = Game.getObjectById(creep.memory.storage);
-                creep.memory.targetPos = storagePos.pos;
+                creep.memory.targetPos = getTransporterWithdrawTarget(creep);
                 return {nextState: STATE_GRAB_RESOURCE};
                 
             }
@@ -57,7 +56,8 @@ var getTransporterWithdrawTarget = function(creep) {
         return storagePos.pos;
     }
 
-}
+};
+
 var getTransporterDepositTarget = function(creep) {
     // We work out where to put the resources...
     // Perhaps we fill the spawn/extensions...
