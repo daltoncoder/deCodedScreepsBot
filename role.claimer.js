@@ -58,3 +58,5 @@ var runSpawning = function(creep){
       }
     }    
   };
+
+  module.exports = run;

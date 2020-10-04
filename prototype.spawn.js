@@ -124,3 +124,12 @@
                 return this.spawnCreep([MOVE], generateName('Scout'), { memory: { role: 'scout', homeRoom : room} });
               }
             };
+            StructureSpawn.prototype.createCustomClaimer =
+            function(energy, room) {
+              if (energy < 650){
+                return;
+              }
+              else {
+                return this.spawnCreep([MOVE,CLAIM], generateName('Claimer'), { memory: { role: 'claimer', homeRoom : room} }); 
+              }
+            };

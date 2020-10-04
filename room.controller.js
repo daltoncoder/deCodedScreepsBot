@@ -49,7 +49,12 @@ var run = function (room) {
   var maxBuilders = 0;
 
   var scoutableRooms = _.filter(Object.keys(room.memory.neighbors), (openRoom) => room.memory.neighbors[openRoom].needScout == true);
-  var maxScouts = scoutableRooms.length; 
+  var maxScouts = scoutableRooms.length;
+  
+  if (Game.gcl.level > Object.keys(Memory.rooms).length){
+    var maxClaimers = 1;
+  }
+  else var maxClaimers = 0;
 
   var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.memory.homeRoom == room.name);
   var haulers = _.filter(Game.creeps, (creep) => creep.memory.role == 'hauler' && creep.memory.homeRoom == room.name);
@@ -57,6 +62,7 @@ var run = function (room) {
   var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.memory.homeRoom == room.name);
   var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.memory.homeRoom == room.name);
   var scouts = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout' && creep.memory.homeRoom == room.name);
+  var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
 
   if (miners.length < 1 && !room.memory.spawnQueue.includes('miner')) {
     room.memory.spawnQueue.push('miner');
@@ -84,6 +90,9 @@ var run = function (room) {
   }
   else if (scouts.length < maxScouts && !room.memory.spawnQueue.includes('scout')) {
     room.memory.spawnQueue.push('scout');
+  }
+  else if (claimers.length < maxClaimers && !room.memory.spawnQueue.includes('claimer')){
+    room.memory.spawnQueue.push('claimer');
   }
 
 
@@ -117,8 +126,11 @@ var run = function (room) {
         else if (spawnObj == 'scout') {
           spawn.createCustomScout(energy, roomName);
           room.memory.spawnQueue.splice(0, 1);
-      }
-
+        }
+        else if (spawnObj == 'claimer') {
+          spawn.createCustomClaimer(energy, roomName);
+          room.memory.spawnQueue.splice(0,1);
+        }
     }
   }
 }
