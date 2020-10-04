@@ -29,7 +29,9 @@ var roleUpgrader = {
                 var target = ruin;
             }
             else{
+                console.log(sources);
                 var target = sources;
+
                 console.log('creep:' + creep + 'target: ' + target)
             }
             if(creep.withdraw(target,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
