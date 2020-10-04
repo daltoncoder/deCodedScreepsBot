@@ -40,7 +40,7 @@ var transporterContext = function(creep, currentState) {
                     }
                     });
                     console.log(nuker + ' nukerposbull')
-                    creep.memory.targetPos = nuker.pos;
+                    creep.memory.targetPos = nuker[0].pos;
                 }
                 else{
                 creep.memory.targetPos = storagePos.pos;
