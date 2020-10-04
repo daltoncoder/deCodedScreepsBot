@@ -46,7 +46,7 @@ var run = function (room) {
     var maxTransporters = 0;
   }
   var maxUpgraders = 1;
-  var maxBuilders = 1;
+  var maxBuilders = room.memory.buildersNeeded;
 
   if(room.controller.level >= 5){
   var scoutableRooms = _.filter(Object.keys(room.memory.neighbors), (openRoom) => room.memory.neighbors[openRoom].needScout == true);
@@ -70,7 +70,7 @@ var run = function (room) {
   var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
 
   if (miners.length < 1 && !room.memory.spawnQueue.includes('miner')) {
-    room.memory.spawnQueue.push('miner');
+    room.memory.spawnQueue.unshift('miner');
   }
   else if (haulers.length < 1 && !room.memory.spawnQueue.includes('hauler')) {
     room.memory.spawnQueue.push('hauler');
