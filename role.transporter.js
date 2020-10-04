@@ -179,11 +179,11 @@ var runGrabResource = function(creep, options) {
       return;
   }
 var grabTarget = Game.getObjectById(creep.memory.targetID);
-if(grabTarget.structureType){
-creep.withdraw(grabTarget, RESOURCE_ENERGY);
+if(!grabTarget.structureType){
+creep.pickup(grabTarget);
 }
 else{
-    creep.pickup(grabTarget);
+    creep.withdraw(grabTarget, RESOURCE_ENERGY);
 }
 };
 
