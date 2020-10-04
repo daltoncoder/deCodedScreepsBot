@@ -66,6 +66,7 @@ const STATE_HARVESTING = 2;
               
             if(standingPos.length <= 0){
             creep.memory.target = miningPos.pos;
+            creep.memory.containers = false;
             }
             else{
                 
@@ -88,6 +89,13 @@ const STATE_HARVESTING = 2;
             creep.memory.state = transitionState;
             run(creep);
             return;
+        }
+        if(creep.memory.containers == false){
+            if(creep.pos.getRangeTo(pos) <= 1){
+                creep.memory.state = transitionState;
+                run(creep);
+                return;
+            }
         }
         creep.moveTo(pos);
         
