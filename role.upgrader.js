@@ -20,8 +20,18 @@ var roleUpgrader = {
         else {
             var sources = creep.pos.findClosestByPath(FIND_STRUCTURES, {filter: (structure) => {return ((structure.structureType == STRUCTURE_STORAGE || 
             structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] > 50)}});
-            if(creep.withdraw(sources,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}});
+            if (sources.length <= 0){
+                var ruin = creep.pos.findClosestByPath(FIND_RUINS, {
+                    filter: (ruin) => { return ruin.store[RESOURCE_ENERGY] > 0;
+                }});
+
+                var target = ruin;
+            }
+            else{
+                target = sources;
+            }
+            if(creep.withdraw(target,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
         }
     }
