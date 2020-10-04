@@ -36,7 +36,7 @@ var transporterContext = function(creep, currentState) {
                 if(Memory.rooms[creep.memory.homeRoom].nukerPresent == true){
                     var nuker = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        structure.structureType == STRUCTURE_NUKER && structure.store[RESOURCE_ENERGY] > 0;
+                        return structure.structureType == STRUCTURE_NUKER && structure.store[RESOURCE_ENERGY] > 0;
                     }
                     });
                     console.log(nuker + ' nukerposbull')
