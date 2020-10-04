@@ -61,7 +61,9 @@ else{
     var fullStructs = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
             console.log('here');
+            if(structure.store){
             return structure.store[RESOURCE_ENERGY] > 0;
+            }
     }});
     if(fullStructs.length > 0){
         return fullStructs[0].pos;
