@@ -58,7 +58,7 @@ var getHaulerDepositTarget = function(creep) {
             return towers.pos;
         
     }
-    var spawns = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+    var spawns = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION ||
                         structure.structureType == STRUCTURE_SPAWN) &&
@@ -66,7 +66,7 @@ var getHaulerDepositTarget = function(creep) {
                 }
     });
     if (spawns == null){
-        var towers = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+        var towers = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_TOWER) &&
                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 150;
@@ -77,7 +77,7 @@ var getHaulerDepositTarget = function(creep) {
             return towers.pos;
         }
         else {
-            var storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+            var storage = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_STORAGE);
                 }
