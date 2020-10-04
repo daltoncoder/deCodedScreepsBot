@@ -60,12 +60,7 @@ if(creep.room.storage && creep.room.storage.store.getUsedCapacity(RESOURCE_ENERG
 else{
     var fullStructs = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
-            if(structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0){
-            return true;
-            }
-            else{
-                return false;
-            }
+            return structure.store[RESOURCE_ENERGY] > 0;
     }});
     if(fullStructs.length > 0){
         return fullStructs[0].pos;
