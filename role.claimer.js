@@ -32,7 +32,7 @@ var runSpawning = function(creep){
       var neighbors = Object.keys(Memory.rooms[homeRoom].neighbors);
 
       for(room in neighbors){
-        if (Memory.rooms[homeRoom].neighbors[room].claimable == true){
+        if (Memory.rooms[homeRoom].neighbors[neighbors[room]].claimable == true){
           creep.memory.targetRoom = room;
           break;
         }
