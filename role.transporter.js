@@ -32,6 +32,7 @@ var transporterContext = function(creep, currentState) {
                 return {nextState: STATE_DEPOSIT_RESOURCE};
             }
             else {
+                console.log(creep+ ' 1');
                 creep.memory.targetPos = getTransporterWithdrawTarget(creep);
                 return {nextState: STATE_GRAB_RESOURCE};
                 
