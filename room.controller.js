@@ -69,6 +69,8 @@ var run = function (room) {
   var scouts = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout' && creep.memory.homeRoom == room.name);
   var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
 
+  console.log(room + " " + miners);
+
   if (miners.length < 1 && !room.memory.spawnQueue.includes('miner')) {
     room.memory.spawnQueue.unshift('miner');
   }
