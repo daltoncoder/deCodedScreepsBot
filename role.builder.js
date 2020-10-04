@@ -26,14 +26,14 @@ var run = function(creep) {
 
 var runSpawning = function (creep,options){
     var transitionState = options.context ? builderContext(creep, STATE_SPAWNING).nextState : options.nextState;
-    
+
 //When the creep pops out of the spawn transition out of this state and into the next one
     if(!creep.spawning){
         creep.memory.state = transitionState;
         run(creep);
         return;
         }
-//Check to see if the creep needs to be "initalized" and if hasnt we do it. 
+//Check to see if the creep needs to be "initalized" and if hasnt we do it.
     if(!creep.memory.init){
         creep.memory.init = true;
     }
@@ -60,7 +60,12 @@ if(creep.room.storage && creep.room.storage.store.getUsedCapacity(RESOURCE_ENERG
 else{
     var fullStructs = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
+            if(structure.store){
             return structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
+            }
+            else{
+              return false;
+            }
     }});
     if(fullStructs.length > 0){
         return fullStructs[0].pos;
@@ -109,16 +114,16 @@ var getBuildingTarget = function(creep) {
 var runMoving = function(creep, options) {
 
     var transitionState = options.context ? builderContext(creep, STATE_MOVING).nextState : options.nextState;
-    
+
     // We know that creep.memory.targetPos is set up before this state is called. For haulers, it's set in haulerContext(), for other creep roles it would be set somewhere else...
     var pos = new RoomPosition(creep.memory.targetPos.x, creep.memory.targetPos.y, creep.memory.targetPos.roomName);
-    
+
     // Has the creep arrived?
     if(creep.pos.isNearTo(pos)) {
         creep.memory.state = transitionState;
         run(creep);
         return;
-    }    
+    }
     // It hasn't arrived, so we get it to move to targetPos
     else {
     creep.moveTo(pos);
@@ -126,9 +131,9 @@ var runMoving = function(creep, options) {
 };
 
 var runGrabResource = function(creep, options) {
-    
+
     var transitionState = options.context ? builderContext(creep, STATE_GRAB_RESOURCE).nextState : options.nextState;
-    
+
     if (creep.store.getFreeCapacity() <= 0){
         creep.memory.state = transitionState;
         run(creep);
