@@ -47,6 +47,7 @@ var getTransporterWithdrawTarget = function(creep) {
             return (ruin.store[RESOURCE_ENERGY] > 0)
         }
     });
+    console.log(creep+ ' 2 ' + ruins.length );
     if(ruins.length > 0){
         creep.memory.targetID = ruins.id;
         return ruins.pos;
@@ -55,6 +56,7 @@ var getTransporterWithdrawTarget = function(creep) {
         var droppedEnergy = creep.room.find(FIND_DROPPED_RESOURCES, {
             filter: (resource) => {return resource.resourceType == RESOURCE_ENERGY}
         });
+        console.log(creep+ ' 3 ' + droppedEnergy.length );
         if(droppedEnergy.length > 0){
             creep.memory.targetID = droppedEnergy[0].id;
             return droppedEnergy[0].pos;
