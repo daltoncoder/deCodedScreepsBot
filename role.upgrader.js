@@ -30,6 +30,7 @@ var roleUpgrader = {
             }
             else{
                 var target = sources;
+                console.log('target ' + target)
             }
             if(creep.withdraw(target,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffaa00'}});
