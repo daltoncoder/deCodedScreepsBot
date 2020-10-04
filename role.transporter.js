@@ -47,8 +47,8 @@ var getTransporterWithdrawTarget = function(creep) {
         }
     });
     if(ruins.length > 0){
-        creep.memory.targetID = ruin.id;
-        return ruin.pos;
+        creep.memory.targetID = ruins.id;
+        return ruins.pos;
     }
     else {
         let storagePos = Game.getObjectById(creep.memory.storage);
