@@ -45,11 +45,11 @@ var roleUpgrader = {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
         }
-            else if(groundTarget) [
+            else if(groundTarget){
                 if(creep.pickup(groundTarget) == ERR_NOT_IN_RANGE){
                     creep.moveTo(groundTarget);
                 }
-            ]      
+            }      
         }
     }
 };
