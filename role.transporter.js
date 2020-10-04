@@ -56,7 +56,7 @@ var getTransporterWithdrawTarget = function(creep) {
         });
         if(droppedEnergy.length > 0){
             creep.memory.targetID = droppedEnergy[0].id;
-            return droppedEnergy[0].pos
+            return droppedEnergy[0].pos;
         }
         else {
             let storagePos = Game.getObjectById(creep.memory.storage);
@@ -179,11 +179,16 @@ var runGrabResource = function(creep, options) {
       return;
   }
 var grabTarget = Game.getObjectById(creep.memory.targetID);
+if(grabTarget == null){
+    return;
+}
+else{
 if(!grabTarget.structureType){
 creep.pickup(grabTarget);
 }
 else{
     creep.withdraw(grabTarget, RESOURCE_ENERGY);
+}
 }
 };
 
