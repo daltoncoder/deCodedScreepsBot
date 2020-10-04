@@ -140,7 +140,11 @@ var runGrabResource = function(creep, options) {
         return;
     }
     var target = Game.getObjectById(creep.memory.targetID);
-    creep.withdraw(target, RESOURCE_ENERGY);
+    if(creep.withdraw(target, RESOURCE_ENERGY) != OK){
+        creep.memory.state = transitionState;
+        run(creep);
+        return;
+    }
 };
 
 var runBuilding = function(creep,options) {
