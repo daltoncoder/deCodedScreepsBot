@@ -186,7 +186,7 @@ if(grabTarget == null){
     return;
 }
 else{
-if(!grabTarget.structureType){
+if(grabTarget.resourceType){
     console.log('trying to pickup')
     if(creep.pickup(grabTarget) != OK){
         creep.memory.state = transitionState;
