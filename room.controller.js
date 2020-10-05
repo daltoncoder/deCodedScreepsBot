@@ -45,7 +45,7 @@ var run = function (room) {
   else {
     var maxTransporters = 0;
   }
-  var maxUpgraders = 1;
+  var maxUpgraders = 2;
   var maxBuilders = room.memory.buildersNeeded;
 
   if(room.controller.level >= 5){
