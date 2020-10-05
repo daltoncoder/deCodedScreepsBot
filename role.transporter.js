@@ -189,10 +189,18 @@ if(grabTarget == null){
 }
 else{
 if(!grabTarget.structureType){
-creep.pickup(grabTarget);
+    if(creep.pickup(grabTarget) != OK){
+        creep.memory.state = transitionState;
+        run(creep);
+        return;
+    }
 }
 else{
-    creep.withdraw(grabTarget, RESOURCE_ENERGY);
+    if(creep.withdraw(grabTarget, RESOURCE_ENERGY) != OK){
+        creep.memory.state = transitionState;
+        run(creep);
+        return;
+    }
 }
 }
 };
