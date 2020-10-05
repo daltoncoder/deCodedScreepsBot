@@ -5,6 +5,8 @@ var run = function (room) {
     sources = room.find(FIND_SOURCES);
     room.memory.sourceAmt = sources.length;
     room.memory.sources = sources;
+    room.memory.upgradersNeeded = 1;
+    room.memory.buildersNeeded = 1;
 
     for (var element in room.memory.sources) {
       let source = Game.getObjectById(room.memory.sources[element].id);
@@ -45,7 +47,7 @@ var run = function (room) {
   else {
     var maxTransporters = 0;
   }
-  var maxUpgraders = 2;
+  var maxUpgraders = room.memory.upgradersNeeded;
   var maxBuilders = room.memory.buildersNeeded;
 
   if(room.controller.level >= 5){
