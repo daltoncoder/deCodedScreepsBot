@@ -47,7 +47,7 @@ var getTransporterWithdrawTarget = function(creep) {
         }
     });
     if(ruins.length > 0){
-        creep.memory.targetID = ruins.id;
+        creep.memory.targetID = ruins[0].id;
         return ruins[0].pos;
     }
     else{
