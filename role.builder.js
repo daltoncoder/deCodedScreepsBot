@@ -116,12 +116,13 @@ var runMoving = function(creep, options) {
 
     var transitionState = options.context ? builderContext(creep, STATE_MOVING).nextState : options.nextState;
 
-    // We know that creep.memory.targetPos is set up before this state is called. For haulers, it's set in haulerContext(), for other creep roles it would be set somewhere else...
-    var pos = new RoomPosition(creep.memory.targetPos.x, creep.memory.targetPos.y, creep.memory.targetPos.roomName);
-    if(pos == null){
+    if(creep.memory.targetPos == null){
         return;
     }
     else{
+    // We know that creep.memory.targetPos is set up before this state is called. For haulers, it's set in haulerContext(), for other creep roles it would be set somewhere else...
+    var pos = new RoomPosition(creep.memory.targetPos.x, creep.memory.targetPos.y, creep.memory.targetPos.roomName);
+
     // Has the creep arrived?
     if(creep.pos.isNearTo(pos)) {
         creep.memory.state = transitionState;
