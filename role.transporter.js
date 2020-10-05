@@ -49,6 +49,7 @@ var getTransporterWithdrawTarget = function(creep) {
     });
     console.log(creep+ ' 2 ' + ruins.length );
     if(ruins.length > 0){
+        console.log('its in ruins if');
         creep.memory.targetID = ruins.id;
         return ruins.pos;
     }
