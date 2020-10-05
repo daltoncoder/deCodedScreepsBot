@@ -47,11 +47,9 @@ var getTransporterWithdrawTarget = function(creep) {
             return (ruin.store[RESOURCE_ENERGY] > 0)
         }
     });
-    console.log(creep+ ' 2 ' + ruins.length );
     if(ruins.length > 0){
-        console.log('its in ruins if');
         creep.memory.targetID = ruins.id;
-        return ruins.pos;
+        return ruins[0].pos;
     }
     else{
         var droppedEnergy = creep.room.find(FIND_DROPPED_RESOURCES, {
