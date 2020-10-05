@@ -118,7 +118,10 @@ var runMoving = function(creep, options) {
 
     // We know that creep.memory.targetPos is set up before this state is called. For haulers, it's set in haulerContext(), for other creep roles it would be set somewhere else...
     var pos = new RoomPosition(creep.memory.targetPos.x, creep.memory.targetPos.y, creep.memory.targetPos.roomName);
-
+    if(pos == null){
+        return;
+    }
+    else{
     // Has the creep arrived?
     if(creep.pos.isNearTo(pos)) {
         creep.memory.state = transitionState;
@@ -129,6 +132,7 @@ var runMoving = function(creep, options) {
     else {
     creep.moveTo(pos);
     }
+}
 };
 
 var runGrabResource = function(creep, options) {
