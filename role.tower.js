@@ -11,5 +11,6 @@ var run = function(tower){
         tower.repair(closestDamagedStructure);
     }
     }
-}
 };
+
+module.exports = run;
