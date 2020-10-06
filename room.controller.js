@@ -148,7 +148,7 @@ var run = function (room) {
 var towers = room.find(FIND_MY_STRUCTURES,{ filter: (s) => s.structureType == STRUCTURE_TOWER});
 if(towers.length > 0){
 for(var tower in towers){
-  roleTower(tower);
+  roleTower(towers[tower]);
 }
 }
 };
