@@ -99,16 +99,19 @@ var getBuildingTarget = function(creep) {
     if (constructionSites == null){
         var neighbors = Object.keys(Memory.rooms[homeRoom].neighbors);
         for (room in neighbors){
-            console.log(neighbors[room]);
-            if(Memory.rooms[homeRoom].neighbors[neighbors[room]].builderNeeded == true){
+            if(Memory.rooms[homeRoom].neighbors[neighbors[room]].builderNeeded == true && neighbors[room] != creep.pos.roomName){
                 var roomPos = {x : 25, y : 25, roomName : neighbors[room]}
                 return roomPos;
             }
         }
     }
-    else{
+    else if(constructionSites){
         creep.memory.targetID = constructionSites.id;
         return constructionSites.pos;
+    }
+    else{
+        creep.memory.targetID = null;
+        return null;
     }
 };
 
@@ -159,6 +162,10 @@ var runGrabResource = function(creep, options) {
 
 var runBuilding = function(creep,options) {
     var transitionState = options.context ? builderContext(creep, STATE_BUILDING).nextState : options.nextState;
+    if(creep.memory.targetID == null){
+        return;
+    }
+    else{
     var target = Game.getObjectById(creep.memory.targetID);
 
     if (creep.build(target) != OK){
@@ -166,6 +173,7 @@ var runBuilding = function(creep,options) {
         run(creep);
         return;
     }
+}
 };
 
 module.exports = run;
