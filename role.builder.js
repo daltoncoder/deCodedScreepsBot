@@ -142,7 +142,7 @@ var runMoving = function(creep, options) {
 var runGrabResource = function(creep, options) {
 
     var transitionState = options.context ? builderContext(creep, STATE_GRAB_RESOURCE).nextState : options.nextState;
-    if(creep.memory.TargetID == null){
+    if(creep.memory.targetID == null){
         return;
     }
     else{
