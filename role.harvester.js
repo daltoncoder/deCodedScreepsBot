@@ -38,7 +38,7 @@ var roleHarvester = {
                     }
                     else{
                         creep.moveTo(constructionSites);
-                    }                   ]
+                    }
 
                 }
             }
