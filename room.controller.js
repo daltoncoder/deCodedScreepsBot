@@ -1,4 +1,6 @@
 require('prototype.spawn');
+var roleTower = require ('role.tower');
+
 var run = function (room) {
   if (!room.memory.init) {
     room.memory.name = room.name;
