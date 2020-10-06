@@ -9,7 +9,6 @@ var roleRangedDefender = require ('role.rangedDefender');
 var roleTransporter = require ('role.transporter');
 var roleScout = require ('role.scout');
 var roleClaimer = require ('role.claimer');
-var roleTower = require ('role.tower');
 var roomController = require ('room.controller');
 require ('prototype.spawn');
 
