@@ -30,6 +30,18 @@ var roleHarvester = {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
+            else{
+                var constructionSites = creep.pos.findClosestByRange(FIND_MY_CONSTRUCTION_SITES)
+                if(constructionSites){
+                    if(creep.pos.isNearTo(constructionSites)){
+                        creep.build(constructionSites);
+                    }
+                    else{
+                        creep.moveTo(constructionSites);
+                    }                   ]
+
+                }
+            }
         }
     }
 };
