@@ -80,8 +80,8 @@ else{
             return droppedEnergy[0].pos;
         }
         else{
-            creep.memory.targetID = Game.rooms[creep.memory.homeRoom].storage.id;
-            return Game.rooms[creep.memory.homeRoom].storage.pos;
+            creep.memory.targetID = null;
+            return null;
 
         }
     }
@@ -139,7 +139,10 @@ var runMoving = function(creep, options) {
 var runGrabResource = function(creep, options) {
 
     var transitionState = options.context ? builderContext(creep, STATE_GRAB_RESOURCE).nextState : options.nextState;
-
+    if(creep.memory.TargetID == null){
+        return;
+    }
+    else{
     if (creep.store.getFreeCapacity() <= 0){
         creep.memory.state = transitionState;
         run(creep);
@@ -151,6 +154,7 @@ var runGrabResource = function(creep, options) {
         run(creep);
         return;
     }
+}
 };
 
 var runBuilding = function(creep,options) {
