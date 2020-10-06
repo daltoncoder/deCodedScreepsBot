@@ -9,6 +9,7 @@ var roleRangedDefender = require ('role.rangedDefender');
 var roleTransporter = require ('role.transporter');
 var roleScout = require ('role.scout');
 var roleClaimer = require ('role.claimer');
+var roleTower = require ('role.tower');
 var roomController = require ('room.controller');
 require ('prototype.spawn');
 
@@ -19,24 +20,6 @@ module.exports.loop = function () {
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
             console.log('Clearing non-existing creep memory:', name);
-        }
-    }
-
-    var towers = Game.rooms.E22N23.find(FIND_STRUCTURES, {
-        filter: (s) => s.structureType == STRUCTURE_TOWER});
-
-    for (let tower of towers) {
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if(closestHostile) {
-            tower.attack(closestHostile);
-        }
-        if(!closestHostile){
-        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-                filter: (structure) => (structure.structureType != STRUCTURE_WALL) && (structure.hits < structure.hitsMax) && (structure.hits < 500000)
-            });
-        if(closestDamagedStructure) {
-            tower.repair(closestDamagedStructure);
-        }
         }
     }
 
