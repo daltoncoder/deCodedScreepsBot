@@ -154,6 +154,7 @@ var runGrabResource = function(creep, options) {
         run(creep);
         return;
     }
+    console.log(creep.memory.targetID);
     var target = Game.getObjectById(creep.memory.targetID);
     if(target.resourceType){
         if(creep.pickup(target) != OK){
