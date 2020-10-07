@@ -4,7 +4,7 @@ var roleTower = require ('role.tower');
 var run = function (room) {
   if (!room.memory.init) {
     room.memory.name = room.name;
-    sources = room.find(FIND_SOURCES);
+    var sources = room.find(FIND_SOURCES);
     room.memory.sourceAmt = sources.length;
     room.memory.sources = sources;
     room.memory.upgradersNeeded = 1;
