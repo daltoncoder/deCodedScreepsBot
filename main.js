@@ -36,19 +36,43 @@ module.exports.loop = function () {
             roleHarvester.run(creep);
         }
         if(creep.memory.role == 'upgrader') {
+            try{
             roleUpgrader.run(creep);
+            }
+            catch{
+                Game.notify('upgrader role error:  '+ error);
+                console.log(error);
+            }
         }
         if(creep.memory.role == 'builder') {
-            roleBuilder(creep);
+            try{
+                roleBuilder(creep);
+            }
+            catch(error){
+                Game.notify('builder role error:   ' + error);
+                console.log(error);
+            }
         }
         if(creep.memory.role == 'repair') {
             roleRepair.run(creep);
         }
         if(creep.memory.role == 'miner') {
-            roleMiner(creep);
+            try{
+                roleMiner(creep);
+            }
+            catch(error){
+                Game.notify('miner role error:  ' + error);
+                console.log(error);
+            }
         }
         if(creep.memory.role == 'hauler') {
+            try{
             roleHauler(creep);
+            }
+            catch(error){
+                Game.notify('hauler role error:  '+ error);
+                console.log(error);
+            }
         }
         if(creep.memory.role == 'defender') {
             roleDefender.run(creep);
@@ -57,13 +81,31 @@ module.exports.loop = function () {
             roleRangedDefender.run(creep);
         }
         if(creep.memory.role == 'transporter') {
-          roleTransporter(creep);
+            try{
+                roleTransporter(creep);
+            }
+            catch(error){
+                Game.notify('transporter role error:  '+ error);
+                console.log(error);
+            }
         }
         if(creep.memory.role == 'scout'){
+            try{
             roleScout(creep);
+            }
+            catch(error){
+                Game.notify('scout role error:  ' + error);
+                console.log(error);
+            }
         }
         if(creep.memory.role == 'claimer'){
+            try{
             roleClaimer(creep);
+            }
+            catch(error){
+                Game.notify('claimer role error:  '+ error);
+                console.log(error);
+            }
         }
 
     }
