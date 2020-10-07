@@ -105,7 +105,7 @@ var getBuildingTarget = function(creep) {
                 return;
             }
         }
-        console.log(roomRequestingBuilder);
+        console.log('roomrequestingbuilder:  ' + roomRequestingBuilder);
         if(roomRequestingBuilder){
             return roomRequestingBuilder;
         }
