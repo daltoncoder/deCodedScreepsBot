@@ -22,7 +22,9 @@ var run = function (room) {
     }
 
     room.memory.controllerPos = room.controller.pos;
+    if(room.storage){
     room.memory.storagePos = room.storage.pos;
+    }
 
     if (!room.memory.spawnQueue) {
       room.memory.spawnQueue = [];
