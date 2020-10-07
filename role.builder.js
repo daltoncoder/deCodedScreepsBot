@@ -154,24 +154,15 @@ var runGrabResource = function(creep, options) {
         run(creep);
         return;
     }
-    console.log(creep.memory.targetID);
     var target = Game.getObjectById(creep.memory.targetID);
-    console.log(target + " after");
-    if(target.resourceType){
         if(creep.pickup(target) != OK){
-            creep.memory.state = transitionState;
-            run(creep);
-            return;
+            if(creep.withdraw(target, RESOURCE_ENERGY) != OK){
+                creep.memory.state = transitionState;
+                run(creep);
+                return;
+            }
         }
     }
-    else{
-    if(creep.withdraw(target, RESOURCE_ENERGY) != OK){
-        creep.memory.state = transitionState;
-        run(creep);
-        return;
-    }
-}
-}
 };
 
 var runBuilding = function(creep,options) {
