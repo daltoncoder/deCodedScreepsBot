@@ -42,7 +42,6 @@ var run = function (room) {
   }
   var maxMiners = room.memory.sourceAmt;
   var maxHaulers = room.memory.totalHaulers;
-  console.log(room.name + "  " + room.storage.store.getUsedCapacity(RESOURCE_ENERGY));
   if ((room.storage.store[RESOURCE_ENERGY] > 0) && (room.storage.store[RESOURCE_ENERGY] < 75000)) {
     var maxTransporters = 1;
   }
@@ -52,7 +51,6 @@ var run = function (room) {
   else {
     var maxTransporters = 0;
   }
-  console.log(room.name + ' ' + maxTransporters);
   var maxUpgraders = room.memory.upgradersNeeded;
   var maxBuilders = room.memory.buildersNeeded;
 
