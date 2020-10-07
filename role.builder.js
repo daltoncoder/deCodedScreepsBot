@@ -102,8 +102,10 @@ var getBuildingTarget = function(creep) {
                 var roomPos = {x : 25, y : 25, roomName : neighbors[room]}
                 return roomPos;
             }
+        }
             creep.memory.targetID = null;
             return null;
+        
     }
     else if(constructionSites){
         creep.memory.targetID = constructionSites.id;
