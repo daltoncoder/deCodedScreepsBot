@@ -101,8 +101,7 @@ var getBuildingTarget = function(creep) {
             if(Memory.rooms[homeRoom].neighbors[neighbors[room]].builderNeeded == true && neighbors[room] != creep.pos.roomName){
                 console.log('found a room')
                 var roomPos = {x : 25, y : 25, roomName : neighbors[room]}
-                var roomRequestingBuilder = roomPos;
-                return;
+                return roomPos;
             }
         }
         console.log('roomrequestingbuilder:  ' + roomRequestingBuilder);
