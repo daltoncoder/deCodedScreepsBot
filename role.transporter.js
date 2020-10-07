@@ -61,8 +61,14 @@ var getTransporterWithdrawTarget = function(creep) {
         }
         else {
             let storagePos = Game.getObjectById(creep.memory.storage);
+            if(storagePos.store[RESOURCE_ENERGY] > 0){
             creep.memory.targetID = storagePos.id;
             return storagePos.pos;
+            }
+            else{
+                creep.memory.targetID = null;
+                return null;
+            }
         }
     }
 
