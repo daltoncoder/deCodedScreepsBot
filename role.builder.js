@@ -61,7 +61,6 @@ if(creep.room.storage && creep.room.storage.store[RESOURCE_ENERGY] > 0){
 else{
     var fullStructs = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
-            if(structure.store){
             return (structure.store[RESOURCE_ENERGY] > 0 && structure.structureType != STRUCTURE_EXTENSION && structure.structureType != STRUCTURE_SPAWN);
             }
     }});
