@@ -41,7 +41,7 @@ module.exports.loop = function () {
             }
             catch{
                 Game.notify('upgrader role error:  '+ error);
-                console.log(error);
+                console.log('upgrader role error:  '+ error);
             }
         }
         if(creep.memory.role == 'builder') {
@@ -50,7 +50,7 @@ module.exports.loop = function () {
             }
             catch(error){
                 Game.notify('builder role error:   ' + error);
-                console.log(error);
+                console.log('builder role error:   ' + error);
             }
         }
         if(creep.memory.role == 'repair') {
@@ -62,7 +62,7 @@ module.exports.loop = function () {
             }
             catch(error){
                 Game.notify('miner role error:  ' + error);
-                console.log(error);
+                console.log('miner role error:  ' + error);
             }
         }
         if(creep.memory.role == 'hauler') {
@@ -71,7 +71,7 @@ module.exports.loop = function () {
             }
             catch(error){
                 Game.notify('hauler role error:  '+ error);
-                console.log(error);
+                console.log('hauler role error:  '+ error);
             }
         }
         if(creep.memory.role == 'defender') {
@@ -86,7 +86,7 @@ module.exports.loop = function () {
             }
             catch(error){
                 Game.notify('transporter role error:  '+ error);
-                console.log(error);
+                console.log('transporter role error:  ' + error);
             }
         }
         if(creep.memory.role == 'scout'){
@@ -95,7 +95,7 @@ module.exports.loop = function () {
             }
             catch(error){
                 Game.notify('scout role error:  ' + error);
-                console.log(error);
+                console.log('scout role error:  ' + error);
             }
         }
         if(creep.memory.role == 'claimer'){
@@ -104,7 +104,7 @@ module.exports.loop = function () {
             }
             catch(error){
                 Game.notify('claimer role error:  '+ error);
-                console.log(error);
+                console.log('claimer role error:    ' + error);
             }
         }
 
