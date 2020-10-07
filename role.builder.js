@@ -63,7 +63,7 @@ else{
         filter: (structure) => {
             return (structure.store[RESOURCE_ENERGY] > 0 && structure.structureType != STRUCTURE_EXTENSION && structure.structureType != STRUCTURE_SPAWN);
             }
-    }});
+    });
     if(fullStructs.length > 0){
         creep.memory.targetID = fullStructs[0].id;
         return fullStructs[0].pos;
