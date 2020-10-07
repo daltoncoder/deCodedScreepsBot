@@ -156,6 +156,7 @@ var runGrabResource = function(creep, options) {
     }
     console.log(creep.memory.targetID);
     var target = Game.getObjectById(creep.memory.targetID);
+    console.log(target + " after");
     if(target.resourceType){
         if(creep.pickup(target) != OK){
             creep.memory.state = transitionState;
