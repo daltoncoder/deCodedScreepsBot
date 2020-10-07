@@ -101,17 +101,21 @@ var getBuildingTarget = function(creep) {
         for (room in neighbors){
             if(Memory.rooms[homeRoom].neighbors[neighbors[room]].builderNeeded == true && neighbors[room] != creep.pos.roomName){
                 var roomPos = {x : 25, y : 25, roomName : neighbors[room]}
-                return roomPos;
+                var roomRequestingBuilder = roomPos;
+                return;
             }
+        }
+        if(roomRequestingBuilder){
+            return roomRequestingBuilder;
+        }
+        else{
+            creep.memory.targetID = null;
+            return null;
         }
     }
     else if(constructionSites){
         creep.memory.targetID = constructionSites.id;
         return constructionSites.pos;
-    }
-    else{
-        creep.memory.targetID = null;
-        return null;
     }
 };
 
