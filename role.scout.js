@@ -34,12 +34,10 @@ var runSpawning = function(creep){
         var openRoom = _.filter(Object.keys(Memory.rooms[creep.memory.homeRoom].neighbors), (room) => assignedRooms.indexOf(room) == -1 && Memory.rooms[creep.memory.homeRoom].neighbors[room].needScout == true);
         if (openRoom.length > 0){
             creep.memory.targetRoom = openRoom[0];
-
         }
 
     creep.memory.init = true;
     }
-
     // we wait for spawn
 };
 
@@ -62,13 +60,12 @@ var runScouting = function(creep){
         Memory.rooms[homeRoom].neighbors[targetRoom].sources = sources;
         var homeRoomExits = Game.map.describeExits(creep.memory.homeRoom);
         var homeRoomExitsNames = Object.values(homeRoomExits);
-        console.log("1: " + homeRoomExitsNames);
         if(creep.room.controller){
         Memory.rooms[homeRoom].neighbors[targetRoom].controllerPos = creep.room.controller.pos;
         }
         if (homeRoomExitsNames.includes(targetRoom)){
             var roomExits = Object.values(Game.map.describeExits(targetRoom));
-            console.log("2: " + roomExits)
+
             for (exit in roomExits){
                 if (roomExits[exit] != homeRoom){
                     if(!Memory.rooms[homeRoom].neighbors[roomExits[exit]]){

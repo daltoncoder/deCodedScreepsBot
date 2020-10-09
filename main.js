@@ -9,6 +9,7 @@ var roleRangedDefender = require ('role.rangedDefender');
 var roleTransporter = require ('role.transporter');
 var roleScout = require ('role.scout');
 var roleClaimer = require ('role.claimer');
+var roleSignBitch = require('role.signBitch');
 var roomController = require ('room.controller');
 require ('prototype.spawn');
 
@@ -108,6 +109,9 @@ module.exports.loop = function () {
                 Game.notify('claimer role error:  '+ error);
                 console.log('claimer role error:    ' + error);
             }
+        }
+        if(creep.memory.role == 'signBitch'){
+            roleSignBitch(creep);
         }
 
     }

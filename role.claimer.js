@@ -55,6 +55,7 @@ var runSpawning = function(creep){
     if(!creep.memory.claimed){
       if(creep.claimController(creep.room.controller) == 0){
         creep.memory.claimed = true;
+        Memory.rooms[creep.memory.homeRoom].neighbors[creep.memory.targetRoom].claimable= false;
       }
     }    
   };

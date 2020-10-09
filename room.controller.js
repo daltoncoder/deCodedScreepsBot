@@ -144,6 +144,10 @@ var run = function (room) {
           spawn.createCustomClaimer(energy, roomName);
           room.memory.spawnQueue.splice(0,1);
         }
+        else if(spawnObj == 'signBitch'){
+          spawn.createCustomSignBitch(energy, roomName);
+          room.memory.spawnQueue.splice(0,1);
+        }
     }
   }
 }
@@ -154,6 +158,11 @@ if(towers.length > 0){
 for(var tower in towers){
   roleTower(towers[tower]);
 }
+}
+
+//code to make sure my sign is mine in controlled room
+if(room.controller.sign.username != 'Mcguiver' && !room.memory.spawnQueue.includes('signBitch'){
+  room.memory.spawnQueue.push('signBitch');
 }
 };
 module.exports = run;

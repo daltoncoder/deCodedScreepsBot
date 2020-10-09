@@ -133,3 +133,12 @@
                 return this.spawnCreep([MOVE,CLAIM], generateName('Claimer'), { memory: { role: 'claimer', homeRoom : room} }); 
               }
             };
+            StructureSpawn.prototype.createCustomSignBitch =
+            function(energy,room) {
+              if(energy < 300){
+                return;
+              }
+              else{
+                return this.spawnCreep([MOVE), generateName('Sign Bitch'), { memory: { role: 'signBitch', homeRoom : room} });
+              }
+            };
