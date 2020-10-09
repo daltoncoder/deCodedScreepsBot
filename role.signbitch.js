@@ -8,3 +8,4 @@ var run = function(creep){
         creep.suicide();
     }
 };
+module.exports = run;
