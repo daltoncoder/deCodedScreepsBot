@@ -87,9 +87,6 @@ var run = function (room) {
   else if (haulers.length < 1 && !room.memory.spawnQueue.includes('hauler')) {
     room.memory.spawnQueue.push('hauler');
   }
-  else if (transporters.length < 1 && !room.memory.spawnQueue.includes('transporter')) {
-    room.memory.spawnQueue.push('transporter');
-  }
   else if (miners.length < maxMiners && !room.memory.spawnQueue.includes('miner')) {
     room.memory.spawnQueue.push('miner');
   }
