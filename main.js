@@ -9,7 +9,7 @@ var roleRangedDefender = require ('role.rangedDefender');
 var roleTransporter = require ('role.transporter');
 var roleScout = require ('role.scout');
 var roleClaimer = require ('role.claimer');
-var roleSignBitch = require('role.signBitch');
+var roleSignBitch = require('role.signbitch');
 var roomController = require ('room.controller');
 require ('prototype.spawn');
 
