@@ -42,11 +42,16 @@ var run = function (room) {
   }
   var maxMiners = room.memory.sourceAmt;
   var maxHaulers = room.memory.totalHaulers;
-  if ((room.storage.store[RESOURCE_ENERGY] > 0) && (room.storage.store[RESOURCE_ENERGY] < 75000)) {
-    var maxTransporters = 1;
-  }
-  else if (room.storage.store[RESOURCE_ENERGY] > 100000) {
-    var maxTransporters = 2;
+  if(room.storage){
+    if ((room.storage.store[RESOURCE_ENERGY] > 0) && (room.storage.store[RESOURCE_ENERGY] < 75000)) {
+      var maxTransporters = 1;
+    }
+    else if (room.storage.store[RESOURCE_ENERGY] > 100000) {
+      var maxTransporters = 2;
+    }
+    else{
+      maxTransporters = 0;
+    }
   }
   else {
     var maxTransporters = 0;
