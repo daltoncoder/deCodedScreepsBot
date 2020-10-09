@@ -69,19 +69,36 @@ else{
         return fullStructs[0].pos;
     }
     else{
-        var droppedEnergy = creep.room.find(FIND_DROPPED_RESOURCES, {
-            filter: (resource) => {
-                return resource.resourceType == RESOURCE_ENERGY;
-            }
-        });
-        if(droppedEnergy.length > 0){
-            creep.memory.targetID = droppedEnergy[0].id;
-            return droppedEnergy[0].pos;
-        }
+        var ruins = creep.room.find(FIND_RUINS, {
+            filter: (ruin) => {
+                return ruin.store[RESOURCE_ENERGY] > 0;
+            }});
+        if(ruins.length > 0){
+            creep.memory.targetID = ruins[0].id;
+            return ruins[0].pos;
+            }    
         else{
+                var droppedEnergy = creep.room.find(FIND_DROPPED_RESOURCES, {
+                    filter: (resource) => {
+                    return resource.resourceType == RESOURCE_ENERGY;
+                    }
+                });
+            if(droppedEnergy.length > 0){
+                creep.memory.targetID = droppedEnergy[0].id;
+                return droppedEnergy[0].pos;
+            }
+            else{
+                var source = creep.pos.findClosestByRange(FIND_SOURCES);
+                if(source){
+                    creep.memory.targetID = source.id;
+                    return source.pos;
+                }
+            else{            
             creep.memory.targetID = null;
             return null;
+            }
 
+            }
         }
     }
 }
@@ -150,7 +167,14 @@ var runGrabResource = function(creep, options) {
         return;
     }
     var target = Game.getObjectById(creep.memory.targetID);
-        if(creep.pickup(target) != OK){
+    if(target instanceof Source){
+        if(creep.harvest(target) != OK){
+            creep.memory.state = transitionState;
+            run(creep);
+            return;
+        }
+    }
+    else if(creep.pickup(target) != OK){
             if(creep.withdraw(target, RESOURCE_ENERGY) != OK){
                 creep.memory.state = transitionState;
                 run(creep);
