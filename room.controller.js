@@ -56,7 +56,6 @@ var run = function (room) {
   else {
     var maxTransporters = 0;
   }
-  console.log(maxTransporters + ' ' + room.name);
   var maxUpgraders = room.memory.upgradersNeeded;
   var maxBuilders = room.memory.buildersNeeded;
 
