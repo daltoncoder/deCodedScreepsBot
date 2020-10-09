@@ -139,6 +139,6 @@
                 return;
               }
               else{
-                return this.spawnCreep([MOVE), generateName('Sign Bitch'), { memory: { role: 'signBitch', homeRoom : room} });
+                return this.spawnCreep([MOVE], generateName('Sign Bitch'), { memory: { role: 'signBitch', homeRoom : room} });
               }
             };
