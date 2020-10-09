@@ -104,13 +104,6 @@ const STATE_HARVESTING = 2;
     var runHarvesting = function(creep){
         var source = Game.getObjectById(creep.memory.miningPos);
         creep.harvest(source);
-        if((creep.ticksToLive <= creep.memory.spawnTime) && (!creep.memory.spawned)) {
-            let newName = "Miner" + Game.time;
-            if (Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,MOVE], newName,
-              {memory: {role: 'miner', haulers: creep.memory.haulers, haulersNeeded: creep.memory.haulersNeeded, miningPos: creep.memory.miningPos, homeRoom: creep.pos.roomName}})) {
-              creep.memory.spawned = true;
-              }
-        }
     };
     
     
