@@ -51,16 +51,31 @@ var getTransporterWithdrawTarget = function(creep) {
         return ruins[0].pos;
     }
     else{
-        let storagePos = Game.getObjectById(creep.memory.storage);
-        if(storagePos.store[RESOURCE_ENERGY] > 0){
-            creep.memory.targetID = storagePos.id;
-            return storagePos.pos;
+        if(creep.memory.storage){
+            let storagePos = Game.getObjectById(creep.memory.storage);
+            if(storagePos.store[RESOURCE_ENERGY] > 0){
+                creep.memory.targetID = storagePos.id;
+                return storagePos.pos;
+            }
+            else{
+                var droppedEnergy = creep.room.find(FIND_DROPPED_RESOURCES, {
+                    filter: (resource) => {return resource.resourceType == RESOURCE_ENERGY}
+                });
+                if(droppedEnergy.length > 0){
+                    creep.memory.targetID = droppedEnergy[0].id;
+                    return droppedEnergy[0].pos;
+                }
+                else{
+                    creep.memory.targetID = null;
+                    return null;
+                }
+
+            }
         }
         else {
             var droppedEnergy = creep.room.find(FIND_DROPPED_RESOURCES, {
                 filter: (resource) => {return resource.resourceType == RESOURCE_ENERGY}
             });
-            console.log(creep+ ' 3 ' + droppedEnergy.length );
             if(droppedEnergy.length > 0){
                 creep.memory.targetID = droppedEnergy[0].id;
                 return droppedEnergy[0].pos;
