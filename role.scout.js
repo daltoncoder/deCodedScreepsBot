@@ -63,8 +63,9 @@ var runScouting = function(creep){
         var homeRoomExits = Game.map.describeExits(creep.memory.homeRoom);
         var homeRoomExitsNames = Object.values(homeRoomExits);
         console.log("1: " + homeRoomExitsNames);
-
+        if(creep.room.controller){
         Memory.rooms[homeRoom].neighbors[targetRoom].controllerPos = creep.room.controller.pos;
+        }
         if (homeRoomExitsNames.includes(targetRoom)){
             var roomExits = Object.values(Game.map.describeExits(targetRoom));
             console.log("2: " + roomExits)
