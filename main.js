@@ -81,13 +81,13 @@ module.exports.loop = function () {
             roleRangedDefender.run(creep);
         }
         if(creep.memory.role == 'transporter') {
-            try{
+          //  try{
                 roleTransporter(creep);
-            }
-            catch(error){
-                Game.notify('transporter role error:  '+ error);
-                console.log('transporter role error:  ' + error);
-            }
+            //}
+          //  catch(error){
+            //    Game.notify('transporter role error:  '+ error);
+              //  console.log('transporter role error:  ' + error);
+           // }
         }
         if(creep.memory.role == 'scout'){
             try{
