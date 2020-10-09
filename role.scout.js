@@ -60,11 +60,11 @@ var runScouting = function(creep){
     if(!creep.memory.scouted){
         var sources = creep.room.find(FIND_SOURCES);
         Memory.rooms[homeRoom].neighbors[targetRoom].sources = sources;
-
-        var homeRoomExits = Object.values(Memory.rooms[homeRoom].exits);
+        var homeRoomExits = Game.map.describeExits(creep.memory.homeRoom);
+        var homeRoomExitsNames = Object.values(homeRoomExits);
 
         Memory.rooms[homeRoom].neighbors[targetRoom].controllerPos = creep.room.controller.pos;
-        if (homeRoomExits.includes(targetRoom)){
+        if (homeRoomExitsNames.includes(targetRoom)){
             var roomExits = Object.values(Game.map.describeExits(targetRoom));
             for (exit in roomExits){
                 if (!exit == homeRoom){
@@ -75,7 +75,7 @@ var runScouting = function(creep){
             }
         }
 
-        if(!homeRoomExits.includes(targetRoom)){
+        if(!homeRoomExitsNames.includes(targetRoom)){
             if(sources.length >= 2 && Game.map.getRoomStatus(targetRoom).status == 'normal'){
                 Memory.rooms[homeRoom].neighbors[targetRoom].claimable = true;
                 Memory.rooms[homeRoom].roomToClaim = true;
