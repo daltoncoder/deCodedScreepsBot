@@ -78,6 +78,7 @@ var runScouting = function(creep){
         if(!homeRoomExits.includes(targetRoom)){
             if(sources.length >= 2 && Game.map.getRoomStatus(targetRoom).status == 'normal'){
                 Memory.rooms[homeRoom].neighbors[targetRoom].claimable = true;
+                Memory.rooms[homeRoom].roomToClaim = true;
             }
             Memory.rooms[homeRoom].neighbors[targetRoom].needScout = false;
         }
