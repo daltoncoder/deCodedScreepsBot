@@ -67,7 +67,7 @@ var run = function (room) {
     var maxScouts = 0;
   }
   
-  if (Game.gcl.level > Object.keys(Memory.rooms).length){
+  if (Game.gcl.level > Object.keys(Memory.rooms).length) && (room.memory.neighborToClaim == true){
     var maxClaimers = 1;
   }
   else var maxClaimers = 0;
