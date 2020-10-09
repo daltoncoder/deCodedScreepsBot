@@ -24,9 +24,11 @@ module.exports.loop = function () {
 
     for(let name in Game.rooms){
         var room = Game.rooms[name];
-      if(room.controller.my){
-        roomController(room)
-      }
+        if(room.controller){
+            if(room.controller.my){
+            roomController(room)
+            }
+        }
     }
 
 
