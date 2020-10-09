@@ -97,7 +97,7 @@ module.exports.loop = function () {
          //   }
         //    catch(error){
          //       Game.notify('scout role error:  ' + error);
-                console.log('scout role error:  ' + error);
+        //        console.log('scout role error:  ' + error);
         //    }
         }
         if(creep.memory.role == 'claimer'){
