@@ -92,13 +92,13 @@ module.exports.loop = function () {
             }
         }
         if(creep.memory.role == 'scout'){
-        //    try{
+            try{
             roleScout(creep);
-         //   }
-        //    catch(error){
-         //       Game.notify('scout role error:  ' + error);
-        //        console.log('scout role error:  ' + error);
-        //    }
+           }
+           catch(error){
+                Game.notify('scout role error:  ' + error);
+                console.log('scout role error:  ' + error);
+            }
         }
         if(creep.memory.role == 'claimer'){
             try{
