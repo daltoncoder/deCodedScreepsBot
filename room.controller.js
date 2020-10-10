@@ -162,7 +162,7 @@ for(var tower in towers){
 
 //code to make sure my sign is mine in controlled room
 if(room.controller.sign){
-  if(room.controller.sign.username != 'Mcguiver' && !room.memory.spawnQueue.includes('signBitch')){
+  if(room.controller.sign.text != 'New programmer writing 1st screeps bot.Msg Me if you have any advice or notice anything off about my code.' && !room.memory.spawnQueue.includes('signBitch')){
     room.memory.spawnQueue.push('signBitch');
   }
 }

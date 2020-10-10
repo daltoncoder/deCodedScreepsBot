@@ -1,5 +1,5 @@
 var run = function(creep){
-    if(!creep.room.controller.sign || creep.room.controller.sign.username != 'New programmer writing 1st screeps bot.Msg Me if you have any advice or notice anything off about my code.') {
+    if(!creep.room.controller.sign || creep.room.controller.sign.text != 'New programmer writing 1st screeps bot.Msg Me if you have any advice or notice anything off about my code.') {
         if(creep.signController(creep.room.controller, "New programmer writing 1st screeps bot.Msg Me if you have any advice or notice anything off about my code.") == ERR_NOT_IN_RANGE) {
             creep.moveTo(creep.room.controller);
         }
