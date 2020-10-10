@@ -161,8 +161,12 @@ for(var tower in towers){
 }
 
 //code to make sure my sign is mine in controlled room
-if((room.controller.sign == undefined && !room.memory.spawnQueue.includes('signBitch')) || (room.controller.sign.username != 'Mcguiver' && !room.memory.spawnQueue.includes('signBitch'))){
-  room.memory.spawnQueue.push('signBitch');
+if(room.controller.sign){
+  if(room.controller.sign.username != 'Mcguiver' && !room.memory.spawnQueue.includes('signBitch')){
+    room.memory.spawnQueue.push('signBitch');
+  }
 }
+else if(!room.memory.spawnQueue.includes('signBitch')) 
+  room.memory.spawnQueue.push('signBitch');
 };
 module.exports = run;
