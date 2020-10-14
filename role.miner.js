@@ -6,7 +6,7 @@ const STATE_HARVESTING = 2;
         if(!creep.memory.state){
             creep.memory.state = STATE_SPAWNING;
         }
-        
+
         switch(creep.memory.state) {
             case STATE_SPAWNING:
                 runSpawning(creep);
@@ -16,22 +16,22 @@ const STATE_HARVESTING = 2;
                 break;
             case STATE_HARVESTING:
                 runHarvesting(creep);
-                break;        
-            
+                break;
+
         }
-        
+
     };
-    
+
     var runSpawning = function(creep){
-        
+
         //When the creep pops out of the spawn transition out of this state and into the next one
         if(!creep.spawning){
             creep.memory.state = STATE_MOVING;
             run(creep);
             return;
         }
-        
-        //Check to see if the creep needs to be "initalized" and if hasnt we do it. 
+
+        //Check to see if the creep needs to be "initalized" and if hasnt we do it.
         if(!creep.memory.init){
             if(creep.memory.haulers){
                 creep.memory.haulers.forEach((element) => {
@@ -47,7 +47,7 @@ const STATE_HARVESTING = 2;
             else {
                 creep.memory.haulers = [];
             }
-        
+
             if(!creep.memory.miningPos){
                 let occupiedMiningPos =                     //store variable of all the mining positions of alive mining creep
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'miner').map((el) => el.memory.miningPos);
@@ -56,33 +56,33 @@ const STATE_HARVESTING = 2;
                     {filter: (source) => occupiedMiningPos.indexOf(source.id) == -1});
                 creep.memory.miningPos = closestMiningPos.id;
                     }
-            
-            
+
+
             var miningPos = Game.getObjectById(creep.memory.miningPos);
             var standingPos= miningPos.pos.findInRange(FIND_STRUCTURES, 1, {
                 filter: (structure) => {
                         return structure.structureType == STRUCTURE_CONTAINER;
                 }});
-              
+
             if(standingPos.length <= 0){
             creep.memory.target = miningPos.pos;
             creep.memory.containers = false;
             }
             else{
-                
+                creep.memory.container = standingPos[0].id;
                 creep.memory.target = standingPos[0].pos;
             }
-            
+
             creep.memory.spawnTime = Game.spawns['Spawn1'].pos.getRangeTo(creep.memory.target.x,creep.memory.target.y) * 3;
-            
+
             creep.memory.haulersNeeded = 1;
-            
-            
-                
+
+
+
             creep.memory.init = true;
         }
     };
-    
+
     var runMoving = function(creep, transitionState){
         var pos = new RoomPosition(creep.memory.target.x, creep.memory.target.y, creep.memory.target.roomName);
         if(creep.pos.getRangeTo(pos) <= 0){
@@ -98,14 +98,23 @@ const STATE_HARVESTING = 2;
             }
         }
         creep.moveTo(pos);
-        
+
     };
-    
+
     var runHarvesting = function(creep){
         var source = Game.getObjectById(creep.memory.miningPos);
         creep.harvest(source);
+        if(creep.memory.container){
+          var container = Game.getObjectById(creep.memory.container);
+          if(container.store.getFreeCapacity() <= 500){
+            creep.memory.needsHelp = true;
+          }
+          if(container.store.getFreeCapacity() >= 1500){
+            creep.memory.needsHelp = false;
+          }
+        }
     };
-    
-    
+
+
 
 module.exports = run;

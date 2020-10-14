@@ -31,7 +31,7 @@ var haulerContext = function(creep, currentState) {
                 creep.memory.targetPos = getHaulerDepositTarget(creep);
                 return {nextState: STATE_DEPOSIT_RESOURCE};
             } else {
-                creep.memory.targetPos = creep.memory.minerPos;	// or perhaps you're very fancy and you have a function that dynamically assigns your haulers...
+                creep.memory.targetPos = getHaulTarget(creep);	// or perhaps you're very fancy and you have a function that dynamically assigns your haulers...
                 return {nextState: STATE_GRAB_RESOURCE};
             }
             break;
@@ -56,7 +56,7 @@ var getHaulerDepositTarget = function(creep) {
         if(towers){
             creep.memory.depositTarget = towers.id;
             return towers.pos;
-        
+
     }
     var spawns = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
                 filter: (structure) => {
@@ -97,16 +97,45 @@ var getHaulerDepositTarget = function(creep) {
     }
 
 };
+var getHaulTarget = function (creep){
+  var miner = Game.getObjectById(creep.memory.miner);
+  var container = miner.pos.findInRange(FIND_STRUCTURES, 0, {
+    filter: (structure) => {
+      return structure.structureType == STRUCTURE_CONTAINER;
+    }
+  });
+  if(container.length > 0){
+    if(container.store.getFreeCapacity() > 1500){
+      var understaffedMiners = creep.room.find(FIND_MY_CREEPS, {
+        filter: (creep) => {
+          return creep.memory.role == 'miner' && creep.memory.needsHelp == true;
+        }
+      });
+      if(understaffedMiners.length > 0){
+        return understaffedMiners[0].memory.target;
+      }
+      else {
+        return creep.memory.minerPos;
+      }
+    }
+    else{
+      return creep.memory.minerPos;
+    }
+  }
+  else{
+    return creep.memory.minerPos;
+  }
+};
 var runSpawning = function (creep,options){
     var transitionState = options.context ? haulerContext(creep, STATE_SPAWNING).nextState : options.nextState;
-    
+
 //When the creep pops out of the spawn transition out of this state and into the next one
     if(!creep.spawning){
         creep.memory.state = transitionState;
         run(creep);
         return;
         }
-//Check to see if the creep needs to be "initalized" and if hasnt we do it. 
+//Check to see if the creep needs to be "initalized" and if hasnt we do it.
     if(creep.id){
     if(!creep.memory.init){
         var miner = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
@@ -136,21 +165,21 @@ var runSpawning = function (creep,options){
 var runMoving = function(creep, options) {
 
     var transitionState = options.context ? haulerContext(creep, STATE_MOVING).nextState : options.nextState;
-    
+
     if(creep.memory.targetPos == null){
         return;
     }
-    else{    
+    else{
     // We know that creep.memory.targetPos is set up before this state is called. For haulers, it's set in haulerContext(), for other creep roles it would be set somewhere else...
     var pos = new RoomPosition(creep.memory.targetPos.x, creep.memory.targetPos.y, creep.memory.targetPos.roomName);
-    
+
     // Has the creep arrived?
     if(creep.pos.isNearTo(pos)) {
         creep.memory.state = transitionState;
         run(creep);
         return;
     }
-    
+
     if(creep.ticksToLive < 100 && !creep.memory.retired) {
         let miner = Game.getObjectById(creep.memory.miner);
         if(miner){
@@ -158,8 +187,8 @@ var runMoving = function(creep, options) {
         creep.memory.retired = true;
         }
     }
-    
-    
+
+
     // It hasn't arrived, so we get it to move to targetPos
     else {
     creep.moveTo(pos);
@@ -168,16 +197,16 @@ var runMoving = function(creep, options) {
 };
 
 var runGrabResource = function(creep, options) {
-    
+
     var transitionState = options.context ? haulerContext(creep, STATE_GRAB_RESOURCE).nextState : options.nextState;
-    
+
     if (creep.store.getFreeCapacity() <= 0){
         creep.memory.state = transitionState;
         run(creep);
         return;
     }
-        
-    
+
+
     if((creep.memory.grabTargetP == null) || (creep.memory.grabTargetW == null)){
         var droppedEnergy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1);
         if (droppedEnergy.length > 0){
@@ -215,6 +244,6 @@ var runDepositResource = function(creep,options) {
         return;
     }
 };
-    
-    
+
+
 module.exports = run;
