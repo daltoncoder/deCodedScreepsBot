@@ -76,7 +76,7 @@ else{
         if(ruins.length > 0){
             creep.memory.targetID = ruins[0].id;
             return ruins[0].pos;
-            }    
+            }
         else{
                 var droppedEnergy = creep.room.find(FIND_DROPPED_RESOURCES, {
                     filter: (resource) => {
@@ -88,12 +88,12 @@ else{
                 return droppedEnergy[0].pos;
             }
             else{
-                var source = creep.pos.findClosestByRange(FIND_SOURCES);
+                var source = creep.pos.findClosestByRange(FIND_SOURCES, {filter: (source) => { return source.energy > 0;}});
                 if(source){
                     creep.memory.targetID = source.id;
                     return source.pos;
                 }
-            else{            
+            else{
             creep.memory.targetID = null;
             return null;
             }
@@ -122,7 +122,7 @@ var getBuildingTarget = function(creep) {
         }
             creep.memory.targetID = null;
             return null;
-        
+
     }
     else if(constructionSites){
         creep.memory.targetID = constructionSites.id;
