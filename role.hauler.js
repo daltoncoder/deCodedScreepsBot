@@ -114,7 +114,7 @@ var getHaulTarget = function (creep){
       if(understaffedMiners.length > 0){
         return understaffedMiners[0].memory.target;
         console.log(understaffedMiners[0]);
-        console.log(understaffedMiners[0].memory.target)''
+        console.log(understaffedMiners[0].memory.target);
       }
       else {
         return creep.memory.minerPos;
