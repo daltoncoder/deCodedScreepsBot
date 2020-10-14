@@ -105,7 +105,7 @@ var getHaulTarget = function (creep){
     }
   });
   if(container.length > 0){
-    if(container.store.getFreeCapacity() > 1500){
+    if(container[0].store.getFreeCapacity() > 1500){
       var understaffedMiners = creep.room.find(FIND_MY_CREEPS, {
         filter: (creep) => {
           return creep.memory.role == 'miner' && creep.memory.needsHelp == true;
