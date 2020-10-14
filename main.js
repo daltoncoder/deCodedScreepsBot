@@ -74,7 +74,7 @@ module.exports.loop = function () {
             }
             catch(error){
                 Game.notify('hauler role error:  '+ error);
-                console.log('hauler role error:  '+ error);
+                console.log('hauler role error:  '+ error + error.line);
             }
         }
         if(creep.memory.role == 'defender') {
