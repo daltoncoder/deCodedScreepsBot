@@ -98,8 +98,8 @@ var getHaulerDepositTarget = function(creep) {
 
 };
 var getHaulTarget = function (creep){
-  var miner = Game.getObjectById(creep.memory.miner);
-  var container = miner.pos.findInRange(FIND_STRUCTURES, 0, {
+  var minerPos = new RoomPosition(creep.memory.minerPos.x,creep.memory.minerPos.y, creep.memory.minerPos.roomName);
+  var container = minerPos.findInRange(FIND_STRUCTURES, 0, {
     filter: (structure) => {
       return structure.structureType == STRUCTURE_CONTAINER;
     }
