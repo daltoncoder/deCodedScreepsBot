@@ -69,13 +69,13 @@ module.exports.loop = function () {
             }
         }
         if(creep.memory.role == 'hauler') {
-            try{
+  //          try{
             roleHauler(creep);
-            }
-            catch(error){
-                Game.notify('hauler role error:  '+ error);
-                console.log('hauler role error:  '+ error + error.lineNumber);
-            }
+    //        }
+      //      catch(error){
+        //        Game.notify('hauler role error:  '+ error);
+          //      console.log('hauler role error:  '+ error + error);
+            //}
         }
         if(creep.memory.role == 'defender') {
             roleDefender.run(creep);
