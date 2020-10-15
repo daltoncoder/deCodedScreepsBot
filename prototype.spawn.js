@@ -61,7 +61,7 @@
           else{
         // create a balanced body as big as possible with given energy
         var numberOfParts = Math.floor(energy / 100);
-        var numberOfParts = Math.min(numberOfParts, 5);
+        var numberOfParts = Math.min(numberOfParts, 10);
         var body = [];
 
         for (let i = 0; i < numberOfParts; i++){
@@ -130,7 +130,7 @@
                 return;
               }
               else {
-                return this.spawnCreep([MOVE,CLAIM], generateName('Claimer'), { memory: { role: 'claimer', homeRoom : room} }); 
+                return this.spawnCreep([MOVE,CLAIM], generateName('Claimer'), { memory: { role: 'claimer', homeRoom : room} });
               }
             };
             StructureSpawn.prototype.createCustomSignBitch =
