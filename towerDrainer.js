@@ -11,7 +11,7 @@ var towerDrainer = function (room) {
     if(!tanker.memory.inPos){
       tanker.moveTo(startPos);
     }
-    if(tanker.pos == startPos){
+    if(tanker.pos.isEqualTo(startPos)){
       tanker.memory.inPos = true;
     }
   }
