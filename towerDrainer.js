@@ -1,7 +1,7 @@
 var towerDrainer = function (room) {
   var enemyTower = Game.getObjectById('5f890f6de05d15282675a474');
   if(Game.creeps['tanker'] == undefined){
-    Game.spawns['Spawn2'].spawnCreep([MOVE,MOVE,MOVE,TOUGH,TOUGH,HEAL], 'tanker', {memory:{role: 'tanker'}});
+    Game.spawns['Spawn2'].spawnCreep([TOUGH,TOUGH,MOVE,MOVE,MOVE,HEAL], 'tanker', {memory:{role: 'tanker'}});
   }
   if(Game.creeps['tanker']){
     var tanker = Game.creeps['tanker'];
