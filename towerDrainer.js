@@ -42,7 +42,7 @@ if(tanker.memory.roomClear == true);{
   Game.spawns['Spawn2'].spawnCreep([TOUGH,TOUGH,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK], 'attacker', {memory:{role: 'attacker'}});
 }
 if(Game.creeps['attacker']){
-  var attacker = Game.creeps[attacker];
+  var attacker = Game.creeps['attacker'];
   var nextToTower= new RoomPosition(34,14, 'E23N23');
   if(!attacker.memory.inRoom){
     attacker.moveTo(nextToTower);
