@@ -61,7 +61,7 @@ if(Game.creeps['attacker']){
   else{
     var enemyCreeps= attacker.room.find(FIND_HOSTILE_CREEPS);
     if(enemyCreeps.length > 0){
-      var closestCreep = creep.pos.findClosestByRange(enemyCreeps);
+      var closestCreep = attacker.pos.findClosestByRange(enemyCreeps);
       if(attacker.attack(closestCreep) == ERR_NOT_IN_RANGE){
         attacker.moveTo(closestCreep);
         attacker.attack(closestCreep);
