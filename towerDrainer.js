@@ -1,12 +1,12 @@
 var towerDrainer = function (room) {
-  var enemyTower = Game.getObjectById('5f890f6de05d15282675a474');
+  var enemyTower = Game.getObjectById('5f80d8fc8591b34cb3e44175');
   if(Game.creeps['tanker'] == undefined){
     Game.spawns['Spawn2'].spawnCreep([TOUGH,TOUGH,MOVE,MOVE,MOVE,HEAL], 'tanker', {memory:{role: 'tanker'}});
   }
   if(Game.creeps['tanker']){
     var tanker = Game.creeps['tanker'];
-    var startPos = new RoomPosition(3,1,'E23N22')
-    var enter = new RoomPosition(3,48,'E23N23')
+    var startPos = new RoomPosition(48,46,'E23N22')
+    var enter = new RoomPosition(1,46,'E24N22')
 
     if(!tanker.memory.inPos){
       tanker.moveTo(startPos);
@@ -43,7 +43,7 @@ if(tanker.memory.roomClear == true);{
 }
 if(Game.creeps['attacker']){
   var attacker = Game.creeps['attacker'];
-  var nextToTower= new RoomPosition(34,14, 'E23N23');
+  var nextToTower= new RoomPosition(14,23, 'E24N22');
   if(!attacker.memory.inRoom){
     attacker.moveTo(nextToTower);
   }
@@ -51,12 +51,14 @@ if(Game.creeps['attacker']){
     attacker.memory.inRoom = true;
   }
   if(attacker.memory.inRoom == true){
-    var enemySpawn = Game.getObjectById('5f88388b38d6233ae6d352d9');
+  var enemySpawn = Game.getObjectById('5f80271ea466d2f525e56053');
     if(enemyTower){
     attacker.attack(enemyTower);
   }
   else if(enemySpawn){
-    attacker.attack(enemySpawn);
+    if(attacker.attack(enemySpawn)== ERR_NOT_IN_RANGE){
+      attacker.moveTo(enemySpawn);
+    }
   }
   else{
     var enemyCreeps= attacker.room.find(FIND_HOSTILE_CREEPS);
