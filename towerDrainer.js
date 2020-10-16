@@ -30,9 +30,11 @@ var towerDrainer = function (room) {
     tanker.moveTo(startPos)
     tanker.heal(tanker);
   }
+  if(enemyTower){
   if(enemyTower.store[RESOURCE_ENERGY] == 0){
     tanker.memory.roomClear = true;
   }
+}
 
 
 };
