@@ -26,6 +26,7 @@ var towerDrainer = function (room) {
     tanker.heal(tanker);
   }
   else if(tanker.memory.drainTime == false){
+    console.log('trying to move back')
     tanker.moveTo(startPos)
     tanker.heal(tanker);
   }
