@@ -68,11 +68,11 @@ if(Game.creeps['attacker']){
       }
     }
     else{
-      console.log('its in here 123');
-      var enemyStructs = attacker.pos.findClosestByRange(FIND_STRUCTURES, {filter: (struct) => {struct.my == false}});
-      if(enemyStructs){
-        if(attacker.attack(enemyStructs) == ERR_NOT_IN_RANGE){
-          attacker.moveTo(enemyStructs);
+      var enemyStructs = attacker.room.find(FIND_STRUCTURES, {filter: (struct) => {struct.my == false}});
+      if(enemyStructs.length > 0){
+        var closestStruct = attacker.pos.findClosestByRange(enemyStructs);
+        if(attacker.attack(closestStruct) == ERR_NOT_IN_RANGE){
+          attacker.moveTo(closestStruct);
         }
       }
     }
