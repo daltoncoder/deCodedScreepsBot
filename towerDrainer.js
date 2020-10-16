@@ -31,7 +31,7 @@ var towerDrainer = function (room) {
     tanker.heal(tanker);
   }
   if(enemyTower){
-  if(enemyTower.store[RESOURCE_ENERGY] == 0){
+  if(enemyTower.store[RESOURCE_ENERGY] < 50){
     tanker.memory.roomClear = true;
   }
   else{
