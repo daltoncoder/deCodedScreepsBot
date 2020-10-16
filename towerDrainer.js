@@ -68,7 +68,7 @@ if(Game.creeps['attacker']){
       }
     }
     else{
-      var enemyStructs = attacker.room.find(FIND_STRUCTURES, {filter: (struct) => {return struct.my == false}});
+      var enemyStructs = attacker.room.find(FIND_STRUCTURES, {filter: (struct) => {return struct.my == false || struct.structureType == STRUCTURE_CONTAINER}});
       console.log(enemyStructs.length);
       if(enemyStructs.length > 0){
         var closestStruct = attacker.pos.findClosestByRange(enemyStructs);
