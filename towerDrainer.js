@@ -1,4 +1,5 @@
 var towerDrainer = function (room) {
+  var enemyTower = Game.getObjectById('5f890f6de05d15282675a474');
   if(Game.creeps['tanker'] == undefined){
     Game.spawns['Spawn2'].spawnCreep([MOVE,MOVE,TOUGH,TOUGH,HEAL], 'tanker', {memory:{role: 'tanker'}});
   }
@@ -6,6 +7,7 @@ var towerDrainer = function (room) {
     var tanker = Game.creeps['tanker'];
     var startPos = new RoomPosition(3,1,'E23N22')
     var enter = new RoomPosition(3,48,'E23N23')
+
     if(!tanker.memory.inPos){
       tanker.moveTo(startPos);
     }
@@ -26,6 +28,9 @@ var towerDrainer = function (room) {
   else if(tanker.memory.drainTime == false){
     tanker.moveTo(startPos)
     tanker.heal(tanker);
+  }
+  if(enemyTower.store[RESOURCE_ENERGY] == 0){
+    tanker.memory.roomClear = true;
   }
 
 
