@@ -43,7 +43,7 @@ var run = function (room) {
   var maxMiners = room.memory.sourceAmt;
   var maxHaulers = room.memory.totalHaulers;
   if(room.storage){
-    if ((room.storage.store[RESOURCE_ENERGY] > 0) && (room.storage.store[RESOURCE_ENERGY] < 75000)) {
+    if ((room.storage.store[RESOURCE_ENERGY] > 10000) && (room.storage.store[RESOURCE_ENERGY] < 75000)) {
       var maxTransporters = 1;
     }
     else if (room.storage.store[RESOURCE_ENERGY] > 100000) {
@@ -66,7 +66,7 @@ var run = function (room) {
   else{
     var maxScouts = 0;
   }
-  
+
   if ((Game.gcl.level > Object.keys(Memory.rooms).length) && (room.memory.roomToClaim == true)){
     var maxClaimers = 1;
   }
@@ -166,7 +166,7 @@ if(room.controller.sign){
     room.memory.spawnQueue.push('signBitch');
   }
 }
-else if(!room.memory.spawnQueue.includes('signBitch')) 
+else if(!room.memory.spawnQueue.includes('signBitch'))
   room.memory.spawnQueue.push('signBitch');
 };
 module.exports = run;
