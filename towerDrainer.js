@@ -38,7 +38,7 @@ var towerDrainer = function (room) {
     tanker.memory.roomClear = false;
   }
 }
-if(tanker.memory.roomClear == true);{
+if(tanker.memory.roomClear == true && Game.creeps['attacker' == undefined]);{
   Game.spawns['Spawn2'].spawnCreep([ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK], 'attacker', {memory:{role: 'attacker'}});
 }
 if(Game.creeps['attacker']){
