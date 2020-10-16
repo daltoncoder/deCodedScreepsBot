@@ -60,7 +60,6 @@ if(Game.creeps['attacker']){
   }
   else{
     var enemyCreeps= attacker.room.find(FIND_HOSTILE_CREEPS);
-    console.log(enemyCreeps.lenght + '   length')
     if(enemyCreeps.length > 0){
       var closestCreep = attacker.pos.findClosestByRange(enemyCreeps);
       if(attacker.attack(closestCreep) == ERR_NOT_IN_RANGE){
@@ -69,8 +68,8 @@ if(Game.creeps['attacker']){
       }
     }
     else{
-      console.log('in else');
       var enemyStructs = attacker.room.find(FIND_STRUCTURES, {filter: (struct) => {struct.my == false}});
+      console.log(enemyStructs);
       if(enemyStructs.length > 0){
         var closestStruct = attacker.pos.findClosestByRange(enemyStructs);
         if(attacker.attack(closestStruct) == ERR_NOT_IN_RANGE){
