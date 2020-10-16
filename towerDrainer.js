@@ -49,6 +49,8 @@ if(Game.creeps['attacker']){
   }
   if(attacker.pos.isEqualTo(nextToTower)){
     attacker.memory.inRoom = true;
+  }
+  if(attacker.memory.inRoom == true){
     var enemySpawn = Game.getObjectById('5f88388b38d6233ae6d352d9');
     if(enemyTower){
     attacker.attack(enemyTower);
@@ -73,7 +75,7 @@ if(Game.creeps['attacker']){
     }
 
   }
-  }
+}
 }
 
 
