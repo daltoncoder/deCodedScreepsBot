@@ -5,7 +5,7 @@ var towerDrainer = function (room) {
   }
   if(Game.creeps['tanker']){
     var tanker = Game.creeps['tanker'];
-    var startPos = new RoomPosition(48,46,'E23N22')
+    var startPos = new RoomPosition(47,45,'E23N22')
     var enter = new RoomPosition(1,46,'E24N22')
 
     if(!tanker.memory.inPos){
