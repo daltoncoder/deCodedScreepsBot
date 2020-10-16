@@ -63,6 +63,7 @@ if(Game.creeps['attacker']){
     if(enemyCreeps){
       if(attacker.attack(enemyCreeps) == ERR_NOT_IN_RANGE){
         attacker.moveTo(enemyCreeps);
+        attacker.attack(enemyCreeps);
       }
     }
     else{
