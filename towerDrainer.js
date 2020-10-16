@@ -56,6 +56,23 @@ if(Game.creeps['attacker']){
   else if(enemySpawn){
     attacker.attack(enemySpawn);
   }
+  else{
+    var enemyCreeps= attacker.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+    if(enemyCreeps){
+      if(attacker.attack(enemyCreeps) == ERR_NOT_IN_RANGE){
+        attacker.moveTo(enemyCreeps);
+      }
+    }
+    else{
+      var enemyStructs = attacker.pos.findClosestByRange(FIND_STRUCTURES, {filter: (struct) => {struct.my == false}});
+      if(enemyStructs){
+        if(attacker.attack(enemyStructs) == ERR_NOT_IN_RANGE){
+          attacker.moveTo(enemyStructs);
+        }
+      }
+    }
+
+  }
   }
 }
 
