@@ -52,15 +52,7 @@ if(Game.creeps['attacker']){
   }
   if(attacker.memory.inRoom == true){
   var enemySpawn = Game.getObjectById('5f80271ea466d2f525e56053');
-  var enemyCreeps= attacker.room.find(FIND_HOSTILE_CREEPS);
-  if(enemyCreeps.length > 0){
-    var closestCreep = attacker.pos.findClosestByRange(enemyCreeps);
-    if(attacker.attack(closestCreep) == ERR_NOT_IN_RANGE){
-      attacker.moveTo(closestCreep);
-      attacker.attack(closestCreep);
-    }
-  }
-  else if(enemyTower){
+  if(enemyTower){
     attacker.attack(enemyTower);
   }
   else if(enemySpawn){
