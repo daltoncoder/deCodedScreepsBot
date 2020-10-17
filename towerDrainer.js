@@ -53,7 +53,9 @@ if(Game.creeps['attacker']){
   if(attacker.memory.inRoom == true){
   var enemySpawn = Game.getObjectById('5f80271ea466d2f525e56053');
   if(enemyTower){
-    attacker.attack(enemyTower);
+    if(attacker.attack(enemyTower) == ERR_NOT_IN_RANGE){
+      attacker.moveTo(enemyTower);
+    }
   }
   else if(enemySpawn){
     if(attacker.attack(enemySpawn)== ERR_NOT_IN_RANGE){
