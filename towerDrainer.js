@@ -39,7 +39,7 @@ var towerDrainer = function (room) {
   }
 }
 if(tanker.memory.roomClear == true && Game.creeps['attacker' == undefined]);{
-  Game.spawns['Spawn2'].spawnCreep([ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK], 'attacker', {memory:{role: 'attacker'}});
+  Game.spawns['Spawn2'].spawnCreep([ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK], 'attacker', {memory:{role: 'attacker'}});
 }
 if(Game.creeps['attacker']){
   var attacker = Game.creeps['attacker'];
