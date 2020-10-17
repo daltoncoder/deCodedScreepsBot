@@ -1,7 +1,7 @@
 var towerDrainer = function (room) {
   var enemyTower = Game.getObjectById('5f80d8fc8591b34cb3e44175');
   if(Game.creeps['tanker'] == undefined){
-    Game.spawns['Spawn2'].spawnCreep([TOUGH,TOUGH,HEAL,HEAL,HEAL,HEAL,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], 'tanker', {memory:{role: 'tanker'}});
+    Game.spawns['Spawn2'].spawnCreep([MOVE], 'tanker', {memory:{role: 'tanker'}});
   }
   if(Game.creeps['tanker']){
     var tanker = Game.creeps['tanker'];
@@ -39,7 +39,7 @@ var towerDrainer = function (room) {
   }
 }
 if(tanker.memory.roomClear == true && Game.creeps['attacker' == undefined]);{
-  Game.spawns['Spawn2'].spawnCreep([ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK], 'attacker', {memory:{role: 'attacker'}});
+  Game.spawns['Spawn2'].spawnCreep([ATTACK,MOVE], 'attacker', {memory:{role: 'attacker'}});
 }
 if(Game.creeps['attacker']){
   var attacker = Game.creeps['attacker'];
