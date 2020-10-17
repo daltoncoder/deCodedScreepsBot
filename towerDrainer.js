@@ -59,7 +59,8 @@ if(Game.creeps['attacker']){
       attacker.moveTo(closestCreep);
       attacker.attack(closestCreep);
     }
-    else if(enemyTower){
+  }
+  else if(enemyTower){
     attacker.attack(enemyTower);
   }
   else if(enemySpawn){
