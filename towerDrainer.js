@@ -47,7 +47,7 @@ if(Game.creeps['attacker']){
   if(!attacker.memory.inRoom){
     attacker.moveTo(nextToTower);
   }
-  if(attacker.pos.isEqualTo(nextToTower)){
+  if(attacker.pos.isNearTo(nextToTower)){
     attacker.memory.inRoom = true;
   }
   if(attacker.memory.inRoom == true){
