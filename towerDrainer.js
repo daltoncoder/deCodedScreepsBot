@@ -95,7 +95,7 @@ var towerDrainer = function(room) {
               }
             });
             if (enemyConstuctionSites.length > 0){
-              var closestConstructionSite = attack.pos.findClosestByRange(enemyConstuctionSites);
+              var closestConstructionSite = attacker.pos.findClosestByRange(enemyConstuctionSites);
               if(attacker.attack(closestConstructionSite) == ERR_NOT_IN_RANGE){
                 attacker.moveTo(closestConstructionSite);
               }
