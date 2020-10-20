@@ -91,7 +91,7 @@ var towerDrainer = function(room) {
           else {
             var enemyConstuctionSites = attacker.room.find(FIND_CONSTRUCTION_SITES, {
               filter: (struct) => {
-                return strict.my == false;
+                return struct.my == false;
               }
             });
             if (enemyConstuctionSites.length > 0){
