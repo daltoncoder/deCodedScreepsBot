@@ -81,7 +81,6 @@ var towerDrainer = function(room) {
               return ((struct.my == false) && (struct.structureType != STRUCTURE_CONTROLLER))
             }
           });
-          console.log(enemyStructs.length);
           if (enemyStructs.length > 0) {
             var closestStruct = attacker.pos.findClosestByRange(enemyStructs);
             if (attacker.attack(closestStruct) == ERR_NOT_IN_RANGE) {
@@ -94,6 +93,7 @@ var towerDrainer = function(room) {
                 return struct.my == false;
               }
             });
+            console.log(enemyConstuctionSites.length);
             if (enemyConstuctionSites.length > 0){
               var closestConstructionSite = attacker.pos.findClosestByRange(enemyConstuctionSites);
               if(attacker.attack(closestConstructionSite) == ERR_NOT_IN_RANGE){
