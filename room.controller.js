@@ -1,6 +1,5 @@
 require('prototype.spawn');
 var roleTower = require ('role.tower');
-var towerDrainer = require ('towerDrainer');
 
 var run = function (room) {
   if (!room.memory.init) {
@@ -173,8 +172,5 @@ else if(!room.memory.spawnQueue.includes('signBitch')){
 
 
 //room specific attack code
-if(room == Game.rooms['E23N22']){
-  towerDrainer(room);
-}
 };
 module.exports = run;
