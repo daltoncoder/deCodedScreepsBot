@@ -88,6 +88,20 @@ var towerDrainer = function(room) {
               attacker.moveTo(closestStruct);
             }
           }
+          else {
+            var enemyConstuctionSites = attacker.room.find(FIND_CONSTRUCTION_SITES, {
+              filter: (struct) => {
+                return strict.my == false;
+              }
+            });
+            if (enemyConstuctionSites.length > 0){
+              var closestConstructionSite = attack.pos.findClosestByRange(enemyConstuctionSites);
+              if(attacker.attack(closestConstructionSite) == ERR_NOT_IN_RANGE){
+                attacker.moveTo(closestConstructionSite);
+              }
+            }
+
+          }
         }
 
       }
