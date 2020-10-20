@@ -96,7 +96,7 @@ var towerDrainer = function(room) {
             console.log(enemyConstuctionSites.length);
             if (enemyConstuctionSites.length > 0){
               var closestConstructionSite = attacker.pos.findClosestByRange(enemyConstuctionSites);
-              if(attacker.attack(closestConstructionSite) == ERR_NOT_IN_RANGE){
+              if(attacker.dismantle(closestConstructionSite) == ERR_NOT_IN_RANGE){
                 attacker.moveTo(closestConstructionSite);
               }
             }
