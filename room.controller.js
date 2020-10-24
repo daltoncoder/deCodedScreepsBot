@@ -173,8 +173,6 @@ else if(!room.memory.spawnQueue.includes('signBitch')){
 
 
 //room specific attack code
-if(room == Game.rooms['E23N22']){
-  towerDrainer(room);
-}
+
 };
 module.exports = run;
